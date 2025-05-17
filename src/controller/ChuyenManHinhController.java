@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import view.DichVuForm;
+import view.KhachHangForm;
 import view.NhanVienForm;
 import view.PhongForm;
 import view.TaiKhoanForm;
@@ -72,14 +73,16 @@ public class ChuyenManHinhController {
             switch(kind) {
                 case "TrangChu":
                     node=new TrangChuForm();
-                case "KhachHang":
+                case "NhanVien":
                     node=new NhanVienForm();
-                    break;
-                case "Phong":
-                    node=new PhongForm();
                     break;
                 case "DichVu":
                     node=new DichVuForm();
+                    break;
+                case "Phong":
+                    node=new PhongForm();
+                case "KhachHang":
+                    node=new KhachHangForm();
                 case "ThongKe":
                     node=new ThongKeForm();
                 case "TaiKhoan":
