@@ -88,4 +88,26 @@ public class DichVuDAO {
             System.out.print(e);
         }
     }
+     public static DichVu getDichVu(String maDichVu){
+        String query = "SELECT * FROM DICHVU WHERE MADV = ?";
+        try(Connection conn = ConnectionUtils.getMyConnection()) {
+             PreparedStatement ps=conn.prepareStatement(query);
+            ps.setString(1, maDichVu);
+            ResultSet rs = ps.executeQuery();
+            DichVu currentDichVu = new DichVu();
+            while(rs.next()){
+                currentDichVu = new DichVu(
+                        rs.getString("MADV"),
+                        rs.getString("TENDV"),
+                        rs.getDouble("DONGIA"),
+                        rs.getString("DONVITINH")
+                );}
+            return currentDichVu;
+        }
+        catch(Exception e){
+            System.out.print(e);
+            return null;
+        }
+    }
+     
 }

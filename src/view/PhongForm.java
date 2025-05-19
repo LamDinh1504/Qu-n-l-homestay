@@ -32,7 +32,7 @@ public class PhongForm extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        MaPhong = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -142,9 +142,9 @@ public class PhongForm extends javax.swing.JPanel {
 
         jPanel9.setBackground(new java.awt.Color(250, 140, 0));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("P101");
+        MaPhong.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhong.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhong.setText("P101");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,7 +174,7 @@ public class PhongForm extends javax.swing.JPanel {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(102, 102, 102)
-                .addComponent(jLabel5)
+                .addComponent(MaPhong)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -191,7 +191,7 @@ public class PhongForm extends javax.swing.JPanel {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addComponent(MaPhong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addGap(12, 12, 12)
@@ -1132,7 +1132,8 @@ public class PhongForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DatPhongForm dh=new DatPhongForm();
+        String maPhong=MaPhong.getText();
+        DatPhongForm dh=new DatPhongForm(jPanel9,maPhong);
         dh.setLocationRelativeTo(null);
         dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         dh.setVisible(true);
@@ -1184,6 +1185,7 @@ public class PhongForm extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MaPhong;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1240,7 +1242,6 @@ public class PhongForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;

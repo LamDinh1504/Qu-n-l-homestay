@@ -7,7 +7,9 @@ package view;
 import components.ServiceTable;
 import components.StaffManagerTable;
 import dao.DichVuDAO;
+import dao.NhanVienDAO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,6 +70,11 @@ public class DichVuForm extends javax.swing.JPanel {
         });
 
         jButton3.setText("Sửa");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Xuất");
 
@@ -177,6 +184,36 @@ public class DichVuForm extends javax.swing.JPanel {
          }
      }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int selectedRow = TableDichVu.getSelectedRow();
+
+         if (selectedRow == -1) {
+             JOptionPane.showMessageDialog(this, "Vui lòng chọn một dịch vụ để sửa.");
+             return;
+         }
+
+         String maDV = TableDichVu.getValueAt(selectedRow, 0).toString(); // Lấy mã dịch vụ từ dòng được chọn
+
+         model.DichVu dv = DichVuDAO.getDichVu(maDV); // Lấy đối tượng dịch vụ từ DB
+
+         if (dv != null) {
+             UpdateDichVu updateForm = new UpdateDichVu(maDV); // Truyền mã dịch vụ vào form cập nhật
+             updateForm.setLocationRelativeTo(null);
+             updateForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+             updateForm.setVisible(true);
+
+             updateForm.addWindowListener(new java.awt.event.WindowAdapter() {
+                 @Override
+                 public void windowClosed(java.awt.event.WindowEvent e) {
+                     refreshTable(); // Làm mới bảng khi form đóng
+                 }
+             });
+         } else {
+             JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin dịch vụ.");
+         }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
