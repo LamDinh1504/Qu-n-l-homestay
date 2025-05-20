@@ -453,11 +453,11 @@ public class PhongForm extends javax.swing.JPanel {
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Kiểu phòng: Giường đơn");
+        jLabel22.setText("Kiểu phòng: Giường đôi");
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Loại phòng: VIP");
+        jLabel23.setText("Loại phòng: Thường");
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
@@ -636,7 +636,7 @@ public class PhongForm extends javax.swing.JPanel {
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("Kiểu phòng: Giường đơn");
+        jLabel30.setText("Kiểu phòng: Giường đôi");
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
@@ -661,7 +661,7 @@ public class PhongForm extends javax.swing.JPanel {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -772,7 +772,7 @@ public class PhongForm extends javax.swing.JPanel {
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel38.setText("Kiểu phòng: Giường đơn");
+        jLabel38.setText("Kiểu phòng: Giường đôi");
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
@@ -955,7 +955,7 @@ public class PhongForm extends javax.swing.JPanel {
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel46.setText("Kiểu phòng: Giường đơn");
+        jLabel46.setText("Kiểu phòng: Giường đôi");
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
@@ -980,7 +980,7 @@ public class PhongForm extends javax.swing.JPanel {
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

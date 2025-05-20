@@ -12,8 +12,7 @@ import java.sql.*;
 public class DatPhongDAO {
     public int addDatPhong(String maDatPhong, String maKhachHang, String maPhong, String ngayBatDau, String ngayTra, String trangThai) {
     int i = 0;
-    String query = "INSERT INTO DATPHONG (MADATPHONG, MAKHACHHANG, MAPHONG, NGAYBATDAU, NGAYTRA, TRANGTHAI) " +
-                   "VALUES (?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'), ?)";
+    String query = "INSERT INTO DATPHONG (MADP, MAKH, MAPHONG, NGAYBD, NGAYTRA, TRANGTHAI) VALUES (?, ?, ?, TO_DATE(?, 'DD-MM-YYYY'), TO_DATE(?, 'DD-MM-YYYY'), ?)";
 
     try (Connection con = ConnectionUtils.getMyConnection()) {
         PreparedStatement ps = con.prepareStatement(query);
@@ -61,7 +60,7 @@ public class DatPhongDAO {
     return i;
 }
     public static int demSoDatPhong() {
-        String sql = "SELECT COUNT(*) FROM DATPHONG";
+        String sql = "SELECT COUNT(*) FROM DatPhong";
         try (Connection conn =ConnectionUtils.getMyConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {

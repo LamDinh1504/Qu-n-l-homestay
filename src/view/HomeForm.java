@@ -42,8 +42,12 @@ public class HomeForm extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("DangXuat", DangXuat, JlbDangXuat));
         controller.setEvent(listItem);
         
-
-
+        JlbTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            controller.setView(TrangChu, JlbTrangChu); // Gọi lại controller để chuyển view
+        }
+    });
+       
         pack();                      
         setLocationRelativeTo(null);  
         
@@ -80,6 +84,7 @@ public class HomeForm extends javax.swing.JFrame {
         JpnMain = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(54, 55, 55));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -96,6 +101,11 @@ public class HomeForm extends javax.swing.JFrame {
         JlbTrangChu.setForeground(new java.awt.Color(255, 255, 255));
         JlbTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home_1318085.png"))); // NOI18N
         JlbTrangChu.setText("Trang chủ");
+        JlbTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JlbTrangChuMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout TrangChuLayout = new javax.swing.GroupLayout(TrangChu);
         TrangChu.setLayout(TrangChuLayout);
@@ -114,10 +124,10 @@ public class HomeForm extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(54, 55, 55));
+        jPanel3.setBackground(new java.awt.Color(0, 143, 143));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(250, 140, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("HOMESTAY");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -167,6 +177,11 @@ public class HomeForm extends javax.swing.JFrame {
         );
 
         DichVu.setBackground(new java.awt.Color(54, 55, 55));
+        DichVu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DichVuMouseClicked(evt);
+            }
+        });
 
         JlbDichVu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JlbDichVu.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,6 +216,11 @@ public class HomeForm extends javax.swing.JFrame {
         JlbPhong.setForeground(new java.awt.Color(255, 255, 255));
         JlbPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customer-service_1908409.png"))); // NOI18N
         JlbPhong.setText("Phòng");
+        JlbPhong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JlbPhongMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout PhongLayout = new javax.swing.GroupLayout(Phong);
         Phong.setLayout(PhongLayout);
@@ -358,7 +378,7 @@ public class HomeForm extends javax.swing.JFrame {
         JpnMain.setLayout(JpnMainLayout);
         JpnMainLayout.setHorizontalGroup(
             JpnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1027, Short.MAX_VALUE)
+            .addGap(0, 1002, Short.MAX_VALUE)
         );
         JpnMainLayout.setVerticalGroup(
             JpnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,12 +392,12 @@ public class HomeForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JpnMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(JpnMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(JpnMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         JpnMain.getAccessibleContext().setAccessibleName("");
@@ -409,6 +429,22 @@ public class HomeForm extends javax.swing.JFrame {
         JpnMain.validate();
         JpnMain.repaint();
     }//GEN-LAST:event_PhongMouseClicked
+
+    private void JlbTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlbTrangChuMouseClicked
+       
+    }//GEN-LAST:event_JlbTrangChuMouseClicked
+
+    private void DichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DichVuMouseClicked
+        DichVuForm tk = new DichVuForm();
+        JpnMain.removeAll();
+        JpnMain.add(tk).setVisible(true);
+        JpnMain.validate();
+        JpnMain.repaint();
+    }//GEN-LAST:event_DichVuMouseClicked
+
+    private void JlbPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlbPhongMouseClicked
+     
+    }//GEN-LAST:event_JlbPhongMouseClicked
     
                    
     /**

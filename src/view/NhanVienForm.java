@@ -6,10 +6,18 @@ package view;
 
 import components.StaffManagerTable;
 import dao.NhanVienDAO;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -54,6 +62,10 @@ public class NhanVienForm extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TableNhanVien = new javax.swing.JTable();
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +73,8 @@ public class NhanVienForm extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(51, 51, 51));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Xóa");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +82,8 @@ public class NhanVienForm extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(51, 51, 51));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Sửa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,8 +91,17 @@ public class NhanVienForm extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(51, 51, 51));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Xuất");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
+        jButton5.setBackground(new java.awt.Color(51, 51, 51));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Chi tiết");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +109,11 @@ public class NhanVienForm extends javax.swing.JPanel {
             }
         });
 
+        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButton6.setBackground(new java.awt.Color(51, 51, 51));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Tìm kiếm");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -105,7 +135,7 @@ public class NhanVienForm extends javax.swing.JPanel {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jButton6)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,6 +152,8 @@ public class NhanVienForm extends javax.swing.JPanel {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        TableNhanVien.setBackground(new java.awt.Color(60, 63, 65));
+        TableNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         TableNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -244,6 +276,63 @@ public class NhanVienForm extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin nhân viên.");
     }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+     public void openFile(String file) {
+        try {
+            File path = new File(file);
+            Desktop.getDesktop().open(path);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    try {
+    JFileChooser jFileChooser = new JFileChooser();
+    jFileChooser.setDialogTitle("Chọn nơi lưu file Excel");
+    jFileChooser.setSelectedFile(new File("DanhSachNhanVien.xlsx"));
+    int userSelection = jFileChooser.showSaveDialog(this);
+    if (userSelection == JFileChooser.APPROVE_OPTION) {
+        File saveFile = jFileChooser.getSelectedFile();
+        if (!saveFile.toString().toLowerCase().endsWith(".xlsx")) {
+            saveFile = new File(saveFile.toString() + ".xlsx");
+        }
+
+        Workbook wb = new XSSFWorkbook();
+        Sheet sheet = wb.createSheet("Danh sách nhân viên");
+
+        // Tạo dòng tiêu đề (header)
+        Row rowCol = sheet.createRow(0);
+        for (int i = 0; i < TableNhanVien.getColumnCount(); i++) {
+            Cell cell = rowCol.createCell(i);
+            cell.setCellValue(TableNhanVien.getColumnName(i));
+        }
+
+        // Ghi dữ liệu nhân viên
+        for (int j = 0; j < TableNhanVien.getRowCount(); j++) {
+            Row row = sheet.createRow(j + 1);
+            for (int k = 0; k < TableNhanVien.getColumnCount(); k++) {
+                Cell cell = row.createCell(k);
+                Object value = TableNhanVien.getValueAt(j, k);
+                if (value != null) {
+                    cell.setCellValue(value.toString());
+                }
+            }
+        }
+
+        // Ghi workbook ra file
+        try (FileOutputStream out = new FileOutputStream(saveFile)) {
+            wb.write(out);
+        }
+        wb.close();
+
+        // Mở file sau khi lưu
+        openFile(saveFile.toString());
+    }
+} catch (Exception e) {
+    e.printStackTrace();
+}
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,20 +7,28 @@ package view;
 import com.toedter.calendar.JCalendar;
 import controller.PhongController;
 import dao.DatPhongDAO;
+import dao.DichVuDAO;
 import dao.KhachHangDAO;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Frame;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import model.DichVu;
 
 /**
  *
@@ -31,16 +39,26 @@ public class DatPhongForm extends javax.swing.JFrame {
     /**
      * Creates new form DatPhongForm
      */
+    private DichVu dichVuDuocChon;
     private JPanel panel;
     private String MaP;
     public DatPhongForm(JPanel panel,String MaP) {
         this.panel=panel;
         this.MaP=MaP;
         initComponents();
-         MaPhong.setText("Mã phòng: " + MaP);
+        MaPhong.setText("Mã phòng: " + MaP);
         MaDatPhong.setText("Mã phiếu: " + taoMaDatPhongMoi());
+        loadDichVu();
     }
-
+    
+    private void loadDichVu() {
+    ArrayList<DichVu> danhSach = DichVuDAO.getAllDichVu();
+    LoaiDichVu.removeAllItems(); // Xóa mục cũ tránh trùng lặp
+    for (DichVu dv : danhSach) {
+        LoaiDichVu.addItem(dv.getTenDichVu());
+    }
+}
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,11 +103,11 @@ public class DatPhongForm extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        LoaiDichVu = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableDichVu = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -387,22 +405,37 @@ public class DatPhongForm extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Loại dịch vụ");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiDichVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiDichVu.setForeground(new java.awt.Color(0, 0, 0));
+        LoaiDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoaiDichVuMouseClicked(evt);
+            }
+        });
+        LoaiDichVu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoaiDichVuActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Thêm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(51, 51, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Xóa");
 
-        jTable1.setBackground(new java.awt.Color(51, 51, 51));
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableDichVu.setBackground(new java.awt.Color(51, 51, 51));
+        TableDichVu.setForeground(new java.awt.Color(255, 255, 255));
+        TableDichVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -410,8 +443,8 @@ public class DatPhongForm extends javax.swing.JFrame {
                 "Mã dịch vụ ", "Tên dịch vụ", "Đơn giá", "Số lượng"
             }
         ));
-        jTable1.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jScrollPane1.setViewportView(jTable1);
+        TableDichVu.setSelectionForeground(new java.awt.Color(51, 51, 51));
+        jScrollPane1.setViewportView(TableDichVu);
 
         jButton3.setBackground(new java.awt.Color(51, 51, 51));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -455,7 +488,7 @@ public class DatPhongForm extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addComponent(jLabel17)
                 .addGap(46, 46, 46)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jButton1)
                 .addGap(37, 37, 37)
@@ -485,7 +518,7 @@ public class DatPhongForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -512,7 +545,7 @@ public class DatPhongForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     public  String taoMaDatPhongMoi() {
         int soLuong = DatPhongDAO.demSoDatPhong();
         int maMoi = soLuong + 1;
@@ -593,7 +626,7 @@ public class DatPhongForm extends javax.swing.JFrame {
         String labelText = MaDatPhong.getText();
         String maDatPhong = labelText.substring(labelText.indexOf(":") + 1).trim();
         String p = MaPhong.getText();  
-        String maPhong = p.substring(labelText.indexOf(":") + 1).trim();
+        String maPhong = p.substring(p.indexOf(":") + 1).trim();
         String ngayBatDau=NgayDen.getText().trim();
         String ngayTra=NgayTraPhong.getText().trim();
         String trangThai="Trống";
@@ -612,6 +645,18 @@ public class DatPhongForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void LoaiDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoaiDichVuActionPerformed
+        
+    }//GEN-LAST:event_LoaiDichVuActionPerformed
+
+    private void LoaiDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoaiDichVuMouseClicked
+      
+    }//GEN-LAST:event_LoaiDichVuMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -624,6 +669,7 @@ public class DatPhongForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton Gio;
     private javax.swing.JComboBox<String> GioiTinh;
     private javax.swing.JTextField HoTen;
+    private javax.swing.JComboBox<String> LoaiDichVu;
     private javax.swing.JComboBox<String> LoaiPhong;
     private javax.swing.JLabel MaDatPhong;
     private javax.swing.JTextField MaNhanVien;
@@ -632,11 +678,11 @@ public class DatPhongForm extends javax.swing.JFrame {
     private javax.swing.JTextField NgayDen;
     private javax.swing.JTextField NgayTraPhong;
     private javax.swing.JTextField SoDienThoai;
+    private javax.swing.JTable TableDichVu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -659,6 +705,5 @@ public class DatPhongForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

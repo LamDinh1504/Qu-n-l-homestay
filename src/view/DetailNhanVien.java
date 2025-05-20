@@ -88,17 +88,27 @@ public class DetailNhanVien extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Họ và tên");
 
+        HoTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Giới tính");
+
+        GioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Số điện thoại");
 
+        SoDienThoai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Địa chỉ");
 
+        DiaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Email");
+
+        Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(0, 153, 153));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -112,6 +122,8 @@ public class DetailNhanVien extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Chức vụ");
+
+        ChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

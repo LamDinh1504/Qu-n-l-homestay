@@ -20,7 +20,7 @@ import model.NhanVien;
  * @author ASUS
  */
 public class DichVuDAO {
-    public ArrayList<DichVu> getAllDichVu()   {
+    public static ArrayList<DichVu> getAllDichVu()   {
         ArrayList<DichVu> dsDichVu = new ArrayList<>();
         String query = "SELECT * FROM DICHVU";
         try(Connection conn = ConnectionUtils.getMyConnection()){

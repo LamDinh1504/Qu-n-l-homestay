@@ -50,7 +50,7 @@ public class AddNhanVien extends javax.swing.JFrame {
         GioiTinh = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(54, 55, 55));
+        setBackground(new java.awt.Color(51, 51, 51));
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -91,7 +91,7 @@ public class AddNhanVien extends javax.swing.JFrame {
         jLabel6.setText("Email");
 
         jButton1.setBackground(new java.awt.Color(0, 153, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ public class AddNhanVien extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(54, 55, 55));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Hủy");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +143,7 @@ public class AddNhanVien extends javax.swing.JFrame {
                     .addComponent(GioiTinh, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(37, 37, 37))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
+                .addContainerGap(176, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(107, 107, 107)
                 .addComponent(jButton2)

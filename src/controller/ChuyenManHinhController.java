@@ -73,6 +73,7 @@ public class ChuyenManHinhController {
             switch(kind) {
                 case "TrangChu":
                     node=new TrangChuForm();
+                    break;
                 case "NhanVien":
                     node=new NhanVienForm();
                     break;
@@ -81,12 +82,17 @@ public class ChuyenManHinhController {
                     break;
                 case "Phong":
                     node=new PhongForm();
+                    break;
                 case "KhachHang":
                     node=new KhachHangForm();
+                    break;
                 case "ThongKe":
                     node=new ThongKeForm();
+                    break;
                 case "TaiKhoan":
                     node=new TaiKhoanForm();
+                    break;
+                    
                 default:
                     break;
             }
