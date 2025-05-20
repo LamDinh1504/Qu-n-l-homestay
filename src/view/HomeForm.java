@@ -382,7 +382,7 @@ public class HomeForm extends javax.swing.JFrame {
         );
         JpnMainLayout.setVerticalGroup(
             JpnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 592, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -167,9 +167,9 @@ public class UpdateDichVu extends javax.swing.JFrame {
         String donGiaStr = DonGia.getText().trim();
         String donViTinh = DonViTinh.getText().trim();
 
-        Double donGia = null;
+        Integer donGia = null;
         try {
-            donGia = Double.parseDouble(donGiaStr);
+            donGia = Integer.parseInt(donGiaStr);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Đơn giá không hợp lệ. Vui lòng nhập số.", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;

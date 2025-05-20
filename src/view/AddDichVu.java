@@ -183,9 +183,9 @@ public class AddDichVu extends javax.swing.JFrame {
         String donGia = DonGia.getText().trim();
         String donViTinh = DonViTinh.getText().trim();
         
-        Double donGiax=null;
+        Integer donGiax=null;
         try {
-        donGiax = Double.parseDouble(donGia); // chuyển chuỗi sang double
+        donGiax = Integer.parseInt(donGia); // chuyển chuỗi sang double
         } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "Đơn giá không hợp lệ. Vui lòng nhập số!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         return; // thoát không tiếp tục xử lý

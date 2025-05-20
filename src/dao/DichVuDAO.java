@@ -22,7 +22,7 @@ import model.NhanVien;
 public class DichVuDAO {
     public static ArrayList<DichVu> getAllDichVu()   {
         ArrayList<DichVu> dsDichVu = new ArrayList<>();
-        String query = "SELECT * FROM DICHVU";
+        String query = "SELECT*FROM DICHVU";
         try(Connection conn = ConnectionUtils.getMyConnection()){
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -30,7 +30,7 @@ public class DichVuDAO {
                 DichVu currentDichVu = new DichVu(
                     rs.getString("MADV"),
                     rs.getString("TENDV"),
-                    rs.getDouble("DONGIA"),
+                    rs.getInt("DONGIA"),
                     rs.getString("DONVITINH")
                 );
     dsDichVu.add(currentDichVu);
@@ -44,7 +44,7 @@ public class DichVuDAO {
     }
     
     
-    public int addDichVu(String maDichVu,String tenDichVu,double donGia,String donViTinh) {
+    public int addDichVu(String maDichVu,String tenDichVu,int donGia,String donViTinh) {
        int i=0;
         try(Connection con = ConnectionUtils.getMyConnection()) {
         
@@ -52,7 +52,7 @@ public class DichVuDAO {
             PreparedStatement ps=con.prepareStatement(query);
             ps.setString(1,maDichVu);
             ps.setString(2,tenDichVu);
-            ps.setDouble(3,donGia);
+            ps.setInt(3,donGia);
             ps.setString(4,donViTinh);
             i=ps.executeUpdate();
         }
@@ -74,7 +74,7 @@ public class DichVuDAO {
         }
         return i;
     }
-    public void updateDichVu(String maDichVu,String tenDichVu, double donGia, String donViTinh){
+    public void updateDichVu(String maDichVu,String tenDichVu, int donGia, String donViTinh){
         String query = "UPDATE DICHVU SET MADV=?,TENDV=?,DONGIA=?, DONVITINH=?";
         try(Connection conn = ConnectionUtils.getMyConnection()) {
             PreparedStatement ps=conn.prepareStatement(query);
@@ -99,7 +99,7 @@ public class DichVuDAO {
                 currentDichVu = new DichVu(
                         rs.getString("MADV"),
                         rs.getString("TENDV"),
-                        rs.getDouble("DONGIA"),
+                        rs.getInt("DONGIA"),
                         rs.getString("DONVITINH")
                 );}
             return currentDichVu;

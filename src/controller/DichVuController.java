@@ -38,7 +38,7 @@ public class DichVuController {
         return dichVuTableData;
     }
     
-    public boolean addDichVuIntoModel(String maDichVu,String tenDichVu, double donGia, String donViTinh){
+    public boolean addDichVuIntoModel(String maDichVu,String tenDichVu, int donGia, String donViTinh){
         if(maDichVu.trim().isEmpty() || tenDichVu.trim().isEmpty() || donViTinh.trim().isEmpty()){
             return false;
         }
@@ -68,7 +68,7 @@ public class DichVuController {
         }
     }
     
-    public boolean updateDichVuModel(String maDichVu, String tenDichVu,double donGia,String donViTinh){
+    public boolean updateDichVuModel(String maDichVu, String tenDichVu,int donGia,String donViTinh){
         if(maDichVu.trim().isEmpty() || tenDichVu.trim().isEmpty() || donViTinh.trim().isEmpty()){
             return false;
         }
