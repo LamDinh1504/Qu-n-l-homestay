@@ -109,5 +109,13 @@ public class DichVuDAO {
             return null;
         }
     }
-     
+     public static DichVu getDichVuByTen(String tenDichVu) {
+    ArrayList<DichVu> danhSach = getAllDichVu();
+    for (DichVu dv : danhSach) {
+        if (dv.getTenDichVu().equals(tenDichVu)) {
+            return dv;
+        }
+    }
+    return null;
+}
 }

@@ -5,6 +5,8 @@
 package view;
 
 import com.toedter.calendar.JCalendar;
+import controller.CTDichVuController;
+import controller.HoaDonController;
 import controller.PhongController;
 import dao.DatPhongDAO;
 import dao.DichVuDAO;
@@ -15,8 +17,13 @@ import java.awt.Component;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -42,9 +49,14 @@ public class DatPhongForm extends javax.swing.JFrame {
     private DichVu dichVuDuocChon;
     private JPanel panel;
     private String MaP;
-    public DatPhongForm(JPanel panel,String MaP) {
+    private JDialog currentQuantityDialog = null;
+    private JLabel TinhTrang;
+    private JButton Button;
+    public DatPhongForm(JPanel panel,String MaP,JLabel tinhTrang,JButton button) {
         this.panel=panel;
         this.MaP=MaP;
+        this.TinhTrang=tinhTrang;
+        this.Button=button;
         initComponents();
         MaPhong.setText("Mã phòng: " + MaP);
         MaDatPhong.setText("Mã phiếu: " + taoMaDatPhongMoi());
@@ -110,12 +122,15 @@ public class DatPhongForm extends javax.swing.JFrame {
         TableDichVu = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        SoLuong = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(0, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setToolTipText("");
 
         MaDatPhong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         MaDatPhong.setForeground(new java.awt.Color(255, 255, 255));
@@ -407,6 +422,7 @@ public class DatPhongForm extends javax.swing.JFrame {
 
         LoaiDichVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LoaiDichVu.setForeground(new java.awt.Color(0, 0, 0));
+        LoaiDichVu.setToolTipText("");
         LoaiDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LoaiDichVuMouseClicked(evt);
@@ -432,6 +448,11 @@ public class DatPhongForm extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Xóa");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         TableDichVu.setBackground(new java.awt.Color(51, 51, 51));
         TableDichVu.setForeground(new java.awt.Color(255, 255, 255));
@@ -466,6 +487,10 @@ public class DatPhongForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Nhập số lượng");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -485,15 +510,19 @@ public class DatPhongForm extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel17)
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
             .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -516,18 +545,21 @@ public class DatPhongForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(LoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SoLuong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel17)
+                        .addComponent(LoaiDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)
+                        .addComponent(jButton2)
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addGap(319, 319, 319))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -631,36 +663,132 @@ public class DatPhongForm extends javax.swing.JFrame {
         String ngayTra=NgayTraPhong.getText().trim();
         String trangThai="Trống";
         
+        
+        
         PhongController phongController = new PhongController();
+        CTDichVuController ctdichvuController=new CTDichVuController();
+        HoaDonController hoaDonController=new HoaDonController();
+        
         boolean result1 = phongController.addKhachHangIntoModel(maKhachHang,hoTen,soDienThoai,cmnd,email,diaChi,gioiTinh);
         boolean result2 = phongController.addDatPhongIntoModel(maDatPhong,maKhachHang,maPhong,ngayBatDau,ngayTra,trangThai);
+        
+        
+        DefaultTableModel model = (DefaultTableModel) TableDichVu.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String MaDichVu = model.getValueAt(i, 0).toString();
+            int soLuong = Integer.parseInt(model.getValueAt(i, 3).toString());
+            boolean result3=ctdichvuController.addCTDichVuIntoModel(maDatPhong, MaDichVu, soLuong);
+            
+        }
+            
+        
+    
         if(result1==true && result2==true){
             JOptionPane.showMessageDialog(this, "Đặt phòng thành công!");
             
             panel.setBackground(new Color(0, 143, 143));
+            TinhTrang.setText("Tình trạng: Đang sử dụng");
+            Button.setText("Thanh toán");
             dispose();
         }
         else{
             JOptionPane.showMessageDialog(this, "Đặt phòng thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    
+   
+   
+    
     private void LoaiDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoaiDichVuActionPerformed
-        
+
+    
     }//GEN-LAST:event_LoaiDichVuActionPerformed
 
     private void LoaiDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoaiDichVuMouseClicked
-      
+        
     }//GEN-LAST:event_LoaiDichVuMouseClicked
 
+    private void addServiceToTable(DichVu dichVu, int quantity) {
+        DefaultTableModel model = (DefaultTableModel) TableDichVu.getModel();
+
+        // Kiểm tra nếu dịch vụ đã có trong bảng
+        for (int i = 0; i < model.getRowCount(); i++) {
+            if (model.getValueAt(i, 0).equals(dichVu.getMaDichVu())) {
+                int currentQty = (int) model.getValueAt(i, 3);
+                model.setValueAt(currentQty + quantity, i, 3); // Cộng dồn số lượng
+                return;
+            }
+        }
+
+        // Thêm mới nếu chưa có
+        model.addRow(new Object[]{
+            dichVu.getMaDichVu(),
+            dichVu.getTenDichVu(),
+            dichVu.getDonGia(),
+            quantity
+        });
+}
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         
+
+    
+    String selectedServiceName = (String) LoaiDichVu.getSelectedItem();
+    if (selectedServiceName == null || selectedServiceName.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Vui lòng chọn dịch vụ!", "Lỗi", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // B2: Lấy số lượng từ JTextField và kiểm tra hợp lệ
+    String quantityText = SoLuong.getText().trim();
+    if (quantityText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Vui lòng nhập số lượng!", "Lỗi", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    try {
+        int quantity = Integer.parseInt(quantityText);
+        if (quantity <= 0) {
+            JOptionPane.showMessageDialog(this, "Số lượng phải lớn hơn 0!", "Lỗi", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // B3: Lấy thông tin dịch vụ từ DAO
+        DichVu selectedService = DichVuDAO.getDichVuByTen(selectedServiceName);
+        if (selectedService == null) {
+            JOptionPane.showMessageDialog(this, "Dịch vụ không tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // B4: Thêm vào bảng
         
+        addServiceToTable(selectedService, quantity);
+        
+        // B5: Reset trường nhập liệu (tùy chọn)
+        SoLuong.setText("");
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Số lượng phải là số nguyên!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int selectedRow = TableDichVu.getSelectedRow();
+    if (selectedRow >= 0) {
+        ((DefaultTableModel) TableDichVu.getModel()).removeRow(selectedRow);
+    } else {
+        JOptionPane.showMessageDialog(this, 
+            "Vui lòng chọn dịch vụ cần xóa", 
+            "Thông báo", JOptionPane.WARNING_MESSAGE);
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
-    
+    public static void main(String args[]) {
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CMND;
@@ -678,11 +806,13 @@ public class DatPhongForm extends javax.swing.JFrame {
     private javax.swing.JTextField NgayDen;
     private javax.swing.JTextField NgayTraPhong;
     private javax.swing.JTextField SoDienThoai;
+    private javax.swing.JTextField SoLuong;
     private javax.swing.JTable TableDichVu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

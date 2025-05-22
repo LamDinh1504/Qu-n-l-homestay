@@ -33,10 +33,10 @@ public class PhongForm extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         MaPhong = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        KieuPhong = new javax.swing.JLabel();
+        LoaiPhong = new javax.swing.JLabel();
+        TinhTrang = new javax.swing.JLabel();
+        Button = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -146,25 +146,25 @@ public class PhongForm extends javax.swing.JPanel {
         MaPhong.setForeground(new java.awt.Color(255, 255, 255));
         MaPhong.setText("P101");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Kiểu phòng: Giường đôi");
+        KieuPhong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhong.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhong.setText("Kiểu phòng: Giường đôi");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Loại phòng: Thường");
+        LoaiPhong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhong.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhong.setText("Loại phòng: Thường");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Tình trạng: Trống");
+        TinhTrang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrang.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrang.setText("Tình trạng: Trống");
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Đặt phòng");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Button.setBackground(new java.awt.Color(51, 51, 51));
+        Button.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Button.setForeground(new java.awt.Color(255, 255, 255));
+        Button.setText("Đặt phòng");
+        Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonActionPerformed(evt);
             }
         });
 
@@ -179,12 +179,12 @@ public class PhongForm extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
+                    .addComponent(LoaiPhong)
+                    .addComponent(KieuPhong)
+                    .addComponent(TinhTrang)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jButton1)))
+                        .addComponent(Button)))
                 .addGap(48, 48, 48))
         );
         jPanel9Layout.setVerticalGroup(
@@ -193,13 +193,13 @@ public class PhongForm extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(MaPhong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(KieuPhong)
                 .addGap(12, 12, 12)
-                .addComponent(jLabel7)
+                .addComponent(LoaiPhong)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
+                .addComponent(TinhTrang)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(Button)
                 .addContainerGap())
         );
 
@@ -1131,13 +1131,36 @@ public class PhongForm extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
         String maPhong=MaPhong.getText();
-        DatPhongForm dh=new DatPhongForm(jPanel9,maPhong);
-        dh.setLocationRelativeTo(null);
-        dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        dh.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String kieuPhongText=KieuPhong.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhong.getText();
+        String loaiPhong = "";
+
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(Button.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(jPanel9,maPhong,TinhTrang,Button);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        
+        }
+    }//GEN-LAST:event_ButtonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -1185,8 +1208,11 @@ public class PhongForm extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Button;
+    private javax.swing.JLabel KieuPhong;
+    private javax.swing.JLabel LoaiPhong;
     private javax.swing.JLabel MaPhong;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel TinhTrang;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -1245,9 +1271,6 @@ public class PhongForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
