@@ -41,34 +41,52 @@ import model.DichVu;
  *
  * @author ASUS
  */
-public class DatPhongForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DatPhongForm
-     */
+public class DatPhongForm extends javax.swing.JFrame { // Thay đổi từ JFrame sang JDialog
     private DichVu dichVuDuocChon;
     private JPanel panel;
     private String MaP;
     private JDialog currentQuantityDialog = null;
     private JLabel TinhTrang;
     private JButton Button;
-    public DatPhongForm(JPanel panel,String MaP,JLabel tinhTrang,JButton button) {
-        this.panel=panel;
-        this.MaP=MaP;
-        this.TinhTrang=tinhTrang;
-        this.Button=button;
+    private String maDatPhong;
+    private String maKhachHang;
+    private JTable TableDV;
+    // Thay đổi constructor
+    public DatPhongForm(JPanel panel, String MaP, JLabel tinhTrang, JButton button, String maDatPhong) {
+        this.panel = panel;
+        this.MaP = MaP;
+        this.TinhTrang = tinhTrang;
+        this.Button = button;
         initComponents();
         MaPhong.setText("Mã phòng: " + MaP);
-        MaDatPhong.setText("Mã phiếu: " + taoMaDatPhongMoi());
+        this.maDatPhong = taoMaDatPhongMoi();
+        MaDatPhong.setText("Mã phiếu: " + this.maDatPhong);
+        this.maKhachHang=taoMaMoi();
+        this.TableDV=TableDichVu;
         loadDichVu();
     }
+
+    public String getMaDatPhong() {
+        return this.maDatPhong;
+    }
+
+    public String getMaKhachHang() {
+        return maKhachHang;
+    }
+
+    public JTable getTableDV() {
+        return TableDV;
+    }
+    
+    
     
     private void loadDichVu() {
-    ArrayList<DichVu> danhSach = DichVuDAO.getAllDichVu();
-    LoaiDichVu.removeAllItems(); // Xóa mục cũ tránh trùng lặp
-    for (DichVu dv : danhSach) {
-        LoaiDichVu.addItem(dv.getTenDichVu());
-    }
+        ArrayList<DichVu> danhSach = DichVuDAO.getAllDichVu();
+        LoaiDichVu.removeAllItems(); // Xóa mục cũ tránh trùng lặp
+        for (DichVu dv : danhSach) {
+            LoaiDichVu.addItem(dv.getTenDichVu());
+        }
 }
  
     /**
@@ -647,7 +665,7 @@ public class DatPhongForm extends javax.swing.JFrame {
         return String.format("KH%02d", maMoi); 
     }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String maKhachHang=taoMaMoi().trim();
+        String maKhachHang=this.maKhachHang;
         String hoTen = HoTen.getText().trim();
         String soDienThoai = SoDienThoai.getText().trim();
         String cmnd=CMND.getText().trim();
@@ -657,11 +675,12 @@ public class DatPhongForm extends javax.swing.JFrame {
         
         String labelText = MaDatPhong.getText();
         String maDatPhong = labelText.substring(labelText.indexOf(":") + 1).trim();
+      
         String p = MaPhong.getText();  
         String maPhong = p.substring(p.indexOf(":") + 1).trim();
         String ngayBatDau=NgayDen.getText().trim();
         String ngayTra=NgayTraPhong.getText().trim();
-        String trangThai="Trống";
+        String trangThai="Đang sử dụng";
         
         
         
@@ -685,7 +704,6 @@ public class DatPhongForm extends javax.swing.JFrame {
     
         if(result1==true && result2==true){
             JOptionPane.showMessageDialog(this, "Đặt phòng thành công!");
-            
             panel.setBackground(new Color(0, 143, 143));
             TinhTrang.setText("Tình trạng: Đang sử dụng");
             Button.setText("Thanh toán");

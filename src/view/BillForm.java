@@ -4,12 +4,30 @@
  */
 package view;
 
+import controller.CTDichVuController;
+import controller.PhongController;
+import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.CTDichVu;
+import model.DatPhong;
+import model.DichVu;
 
 /**
  *
  * @author ASUS
  */
+
 public class BillForm extends javax.swing.JFrame {
 
     /**
@@ -18,15 +36,82 @@ public class BillForm extends javax.swing.JFrame {
     private String MaPhong;
     private String LoaiPhong;
     private String KieuPhong;
-    public BillForm(String maPhong,String loaiPhong,String kieuPhong) {
+    private String MaDatPhong;
+    private String maKhachHang;
+    private JTable TableDV;
+    public BillForm(String maPhong,String loaiPhong,String kieuPhong,String maDatPhong,String maKhachHang,JTable TableDV) {
         this.MaPhong=maPhong;
         this.KieuPhong=kieuPhong;
         this.LoaiPhong=loaiPhong;
+        this.MaDatPhong=maDatPhong;
+        this.maKhachHang=maKhachHang;
+        this.TableDV=TableDV;
         initComponents();
         
         JlbMaPhong.setText("Mã phòng: " + maPhong);
         JlbKieuPhong.setText("Kiểu phòng: " +kieuPhong);
         JlbLoaiPhong.setText("Loại phòng: " +loaiPhong);
+        JlbMaDatPhong.setText("Mã đặt phòng: " + maDatPhong);
+        PhongController phong=new PhongController();
+        DatPhong datPhong=phong.getDatPhong(maDatPhong);
+        KhachHang.setText(datPhong.getMaKhachHang());
+        NgayDen.setText(datPhong.getNgayBatDau());
+        NgayTraPhong.setText(datPhong.getNgayTra());
+        DefaultTableModel originalModel = (DefaultTableModel) TableDV.getModel();
+        DefaultTableModel newModel = new DefaultTableModel();
+
+        // Thêm tên cột mới (bỏ "MaDichVu")
+        newModel.addColumn("Tên dịch vụ");
+        newModel.addColumn("Đơn giá");
+        newModel.addColumn("Số lượng");
+
+        // Duyệt qua từng dòng của bảng gốc, bỏ cột 0
+        for (int i = 0; i < originalModel.getRowCount(); i++) {
+            Object tenDV = originalModel.getValueAt(i, 1); // Tên dịch vụ
+            Object donGia = originalModel.getValueAt(i, 2); // Đơn giá
+            Object soLuong = originalModel.getValueAt(i, 3); // Số lượng
+
+            newModel.addRow(new Object[] { tenDV, donGia, soLuong });
+        }
+
+        // Gán model mới cho TableDV
+        TableDichVu.setModel(newModel);
+        int tongTien = 0;
+        for (int i = 0; i < TableDichVu.getRowCount(); i++) {
+            Object donGiaObj = TableDichVu.getValueAt(i, 1);
+            Object soLuongObj = TableDichVu.getValueAt(i, 2);
+
+            if (donGiaObj != null && soLuongObj != null) {
+                try {
+                    int donGia = Integer.parseInt(donGiaObj.toString());
+                    int soLuong = Integer.parseInt(soLuongObj.toString());
+                    tongTien += donGia * soLuong;
+                } catch (NumberFormatException e) {
+                    // Có thể log lỗi hoặc bỏ qua dòng nếu dữ liệu không hợp lệ
+                    System.err.println("Dữ liệu không hợp lệ ở dòng " + i);
+                }
+            }
+        }
+        JlbTienDichVu.setText("Tiền dịch vụ: " + tongTien + " đồng");
+        
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        JlbNgayLapHoaDon.setText("Ngày lập hóa đơn: " + today.format(formatter));
+        JlbPhuThu.setText("Phụ thu: 0");
+        
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        String ngayDenStr = datPhong.getNgayBatDau().split(" ")[0];
+        String ngayTraStr = datPhong.getNgayTra().split(" ")[0];
+
+// Parse theo định dạng yyyy-MM-dd vì chuỗi đang có dạng đó
+        LocalDate ngayDen = LocalDate.parse(ngayDenStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate ngayTra = LocalDate.parse(ngayTraStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        long soNgayO = ChronoUnit.DAYS.between(ngayDen, ngayTra);
+
+// Hiển thị ra label hoặc text field
+        JlbSoNgaytO.setText(soNgayO + " ngày");
     }
 
     /**
@@ -57,18 +142,23 @@ public class BillForm extends javax.swing.JFrame {
         JlbPhuThu = new javax.swing.JLabel();
         JlbNgayLapHoaDon = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        JlbSoNgay = new javax.swing.JLabel();
+        JlbSoNgaytO = new javax.swing.JLabel();
         Tong = new javax.swing.JLabel();
         JlbKieuPhong = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jPanel5 = new javax.swing.JPanel();
+        HinhThucThanhToan = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         JlbMaDatPhong = new javax.swing.JLabel();
+        JlbKhachDua = new javax.swing.JLabel();
+        JlbTienTraLai = new javax.swing.JLabel();
+        BtnTaoMaQR = new javax.swing.JButton();
+        JtfTienTraLai = new javax.swing.JTextField();
+        JtfKhachDua = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,10 +206,15 @@ public class BillForm extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Khách hàng: ");
 
+        KhachHang.setEditable(false);
+        KhachHang.setFocusable(false);
+
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Ngày đến: ");
 
+        NgayTraPhong.setEditable(false);
+        NgayTraPhong.setFocusable(false);
         NgayTraPhong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NgayTraPhongActionPerformed(evt);
@@ -130,6 +225,8 @@ public class BillForm extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Ngày trả phòng: ");
 
+        NgayDen.setEditable(false);
+        NgayDen.setFocusable(false);
         NgayDen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NgayDenActionPerformed(evt);
@@ -145,6 +242,11 @@ public class BillForm extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(TableDichVu);
+        if (TableDichVu.getColumnModel().getColumnCount() > 0) {
+            TableDichVu.getColumnModel().getColumn(0).setHeaderValue("Tên dịch vụ");
+            TableDichVu.getColumnModel().getColumn(1).setHeaderValue("Đơn giá");
+            TableDichVu.getColumnModel().getColumn(2).setHeaderValue("Số lượng");
+        }
 
         JlbTienDichVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JlbTienDichVu.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,25 +262,36 @@ public class BillForm extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Số ngày/giờ khách đã ở");
+        JlbSoNgay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        JlbSoNgay.setForeground(new java.awt.Color(255, 255, 255));
+        JlbSoNgay.setText("Số ngày/giờ khách đã ở");
+
+        JlbSoNgaytO.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        JlbSoNgaytO.setForeground(new java.awt.Color(0, 143, 143));
+        JlbSoNgaytO.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel12)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(JlbSoNgay))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(JlbSoNgaytO)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(JlbSoNgay)
+                .addGap(18, 18, 18)
+                .addComponent(JlbSoNgaytO)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         Tong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -288,39 +401,76 @@ public class BillForm extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Hình thức thanh toán: ");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "Chuyển khoản" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        HinhThucThanhToan.setBackground(new java.awt.Color(102, 102, 102));
+        HinhThucThanhToan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        HinhThucThanhToan.setForeground(new java.awt.Color(255, 255, 255));
+        HinhThucThanhToan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "Chuyển khoản" }));
+        HinhThucThanhToan.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                HinhThucThanhToanAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 238, Short.MAX_VALUE)
-        );
+        HinhThucThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HinhThucThanhToanActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 143, 143));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Thanh toán");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(51, 51, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Hủy");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         JlbMaDatPhong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JlbMaDatPhong.setForeground(new java.awt.Color(255, 255, 255));
         JlbMaDatPhong.setText("Mã đặt phòng: ");
+
+        JlbKhachDua.setBackground(new java.awt.Color(51, 51, 51));
+        JlbKhachDua.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JlbKhachDua.setForeground(new java.awt.Color(255, 255, 255));
+        JlbKhachDua.setText("Khách đưa: ");
+
+        JlbTienTraLai.setBackground(new java.awt.Color(51, 51, 51));
+        JlbTienTraLai.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JlbTienTraLai.setForeground(new java.awt.Color(255, 255, 255));
+        JlbTienTraLai.setText("Tiền trả lại: ");
+
+        BtnTaoMaQR.setBackground(new java.awt.Color(0, 143, 143));
+        BtnTaoMaQR.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BtnTaoMaQR.setForeground(new java.awt.Color(255, 255, 255));
+        BtnTaoMaQR.setText("Tạo mã QR");
+        BtnTaoMaQR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTaoMaQRActionPerformed(evt);
+            }
+        });
+
+        JtfTienTraLai.setBackground(new java.awt.Color(51, 51, 51));
+        JtfTienTraLai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        JtfTienTraLai.setForeground(new java.awt.Color(255, 255, 255));
+
+        JtfKhachDua.setBackground(new java.awt.Color(51, 51, 51));
+        JtfKhachDua.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        JtfKhachDua.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -333,29 +483,41 @@ public class BillForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(JlbMaPhong)
                         .addGap(144, 144, 144)
-                        .addComponent(JlbMaDatPhong))
+                        .addComponent(JlbMaDatPhong)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(74, 74, 74)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel17)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel15)
-                                        .addGap(132, 132, 132)
-                                        .addComponent(jLabel16))
-                                    .addComponent(jComboBox1, 0, 437, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(68, 68, 68)
-                                        .addComponent(jLabel14))
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(JlbTienTraLai)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(JtfTienTraLai, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(BtnTaoMaQR)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel17)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel15)
+                                                .addGap(132, 132, 132)
+                                                .addComponent(jLabel16))
+                                            .addComponent(HinhThucThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(68, 68, 68)
+                                                .addComponent(jLabel14))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(JlbKhachDua)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(JtfKhachDua, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(18, 18, 18))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(147, 147, 147)
+                                .addGap(127, 127, 127)
                                 .addComponent(jButton1)
-                                .addGap(132, 132, 132)
-                                .addComponent(jButton2)))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2)
+                                .addGap(67, 67, 67))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,7 +528,7 @@ public class BillForm extends javax.swing.JFrame {
                     .addComponent(JlbMaPhong)
                     .addComponent(JlbMaDatPhong))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel14)
@@ -377,13 +539,25 @@ public class BillForm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(HinhThucThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JlbKhachDua)
+                            .addComponent(JtfKhachDua, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(JlbTienTraLai))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtnTaoMaQR)
+                                .addGap(4, 4, 4)
+                                .addComponent(JtfTienTraLai, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))
+                        .addGap(85, 85, 85))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -410,9 +584,45 @@ public class BillForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NgayDenActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void HinhThucThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HinhThucThanhToanActionPerformed
+        
+    }//GEN-LAST:event_HinhThucThanhToanActionPerformed
+    
+    public void showQRImageDialog() {
+        try {
+            // Đường dẫn tới ảnh QR (bạn có thể thay bằng đường dẫn ảnh thật của bạn)
+            File qrFile = new File("C:\\Users\\ASUS\\Documents\\QuanLyKhachSanThuCung\\src\\icon\\maqr.png");
+            BufferedImage qrImage = ImageIO.read(qrFile);
+
+            JLabel qrLabel = new JLabel(new ImageIcon(qrImage));
+            JDialog dialog = new JDialog();
+            dialog.setTitle("Mã QR Thanh Toán");
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.getContentPane().add(qrLabel);
+            dialog.pack();
+            dialog.setLocationRelativeTo(null); // căn giữa
+            dialog.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Không thể hiển thị ảnh mã QR!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+          JOptionPane.showMessageDialog(this, "Thanh toán thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+          dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BtnTaoMaQRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTaoMaQRActionPerformed
+        showQRImageDialog();
+    }//GEN-LAST:event_BtnTaoMaQRActionPerformed
+
+    private void HinhThucThanhToanAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_HinhThucThanhToanAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_HinhThucThanhToanAncestorAdded
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,6 +630,9 @@ public class BillForm extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnTaoMaQR;
+    private javax.swing.JComboBox<String> HinhThucThanhToan;
+    private javax.swing.JLabel JlbKhachDua;
     private javax.swing.JLabel JlbKieuPhong;
     private javax.swing.JLabel JlbLoaiPhong;
     private javax.swing.JLabel JlbMaDatPhong;
@@ -427,7 +640,12 @@ public class BillForm extends javax.swing.JFrame {
     private javax.swing.JLabel JlbMaPhong;
     private javax.swing.JLabel JlbNgayLapHoaDon;
     private javax.swing.JLabel JlbPhuThu;
+    private javax.swing.JLabel JlbSoNgay;
+    private javax.swing.JLabel JlbSoNgaytO;
     private javax.swing.JLabel JlbTienDichVu;
+    private javax.swing.JLabel JlbTienTraLai;
+    private javax.swing.JTextField JtfKhachDua;
+    private javax.swing.JTextField JtfTienTraLai;
     private javax.swing.JTextField KhachHang;
     private javax.swing.JTextField NgayDen;
     private javax.swing.JTextField NgayTraPhong;
@@ -435,9 +653,7 @@ public class BillForm extends javax.swing.JFrame {
     private javax.swing.JLabel Tong;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -449,7 +665,6 @@ public class BillForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

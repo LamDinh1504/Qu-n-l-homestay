@@ -32,7 +32,8 @@ public class DichVuDAO {
                     rs.getString("TENDV"),
                     rs.getInt("DONGIA"),
                     rs.getString("DONVITINH")
-                );
+                ) {
+                };
     dsDichVu.add(currentDichVu);
 }
             } catch (SQLException e) {
@@ -94,14 +95,15 @@ public class DichVuDAO {
              PreparedStatement ps=conn.prepareStatement(query);
             ps.setString(1, maDichVu);
             ResultSet rs = ps.executeQuery();
-            DichVu currentDichVu = new DichVu();
+            DichVu currentDichVu = new DichVu() {};
             while(rs.next()){
                 currentDichVu = new DichVu(
                         rs.getString("MADV"),
                         rs.getString("TENDV"),
                         rs.getInt("DONGIA"),
                         rs.getString("DONVITINH")
-                );}
+                ) {} 
+                ;}
             return currentDichVu;
         }
         catch(Exception e){
@@ -118,4 +120,5 @@ public class DichVuDAO {
     }
     return null;
 }
+     
 }

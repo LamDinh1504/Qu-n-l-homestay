@@ -5,6 +5,8 @@
 package dao;
 import ConnectDB.ConnectionUtils;
 import java.sql.*;
+import model.DatPhong;
+import model.NhanVien;
 /**
  *
  * @author ASUS
@@ -72,5 +74,30 @@ public class DatPhongDAO {
             e.printStackTrace();
         }
         return 0;
+    }
+    
+     public static DatPhong getDatPhong(String maDatPhong){
+        String query = "SELECT * FROM DATPHONG WHERE MADP = ?";
+        try(Connection conn = ConnectionUtils.getMyConnection()) {
+             PreparedStatement ps=conn.prepareStatement(query);
+            ps.setString(1, maDatPhong);
+            ResultSet rs = ps.executeQuery();
+            DatPhong currentDatPhong = new DatPhong();
+            while(rs.next()){
+                currentDatPhong = new DatPhong(
+                        rs.getString("MADP"),
+                        rs.getString("MAKH"),
+                        rs.getString("MAPHONG"),
+                        rs.getString("NGAYBD"),
+                        rs.getString("NGAYTRA"),
+                        rs.getString("TRANGTHAI")
+                );
+            }
+            return currentDatPhong;
+        }
+        catch(Exception e){
+            System.out.print(e);
+            return null;
+        }
     }
 }

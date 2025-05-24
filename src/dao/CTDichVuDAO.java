@@ -7,12 +7,44 @@ package dao;
 import ConnectDB.ConnectionUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.CTDichVu;
+import model.DichVu;
+import model.NhanVien;
 
 /**
  *
  * @author ASUS
  */
 public class CTDichVuDAO {
+    
+    public static ArrayList<CTDichVu> getAllCTDichVu()   {
+        ArrayList<CTDichVu> dsCTDichVu = new ArrayList<>();
+        String query = "SELECT*FROM CTDV";
+        try(Connection conn = ConnectionUtils.getMyConnection()){
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                CTDichVu currentCTDichVu = new CTDichVu(
+                    rs.getString("MADP"),
+                    rs.getString("MADV"),
+                    rs.getInt("SOLUONG")
+
+                ) {
+                };
+    dsCTDichVu.add(currentCTDichVu);
+}
+            } catch (SQLException e) {
+        System.err.println("Lỗi khi truy vấn dữ liệu dịch vụ: " + e.getMessage());
+} catch (ClassNotFoundException ex) {
+            Logger.getLogger(DichVuDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      return dsCTDichVu;
+    }
     public int addCTDichVu(String maDatPhong,String maDichVu,int soLuong) {
        int i=0;
         try(Connection con = ConnectionUtils.getMyConnection()) {
@@ -56,4 +88,28 @@ public class CTDichVuDAO {
             System.out.print(e);
         }
     }
+    public ArrayList<CTDichVu> getAllDichVu(String maDatPhong)   {
+        ArrayList<CTDichVu> dsCTDichVu = new ArrayList<>();
+        String query = "SELECT * FROM CTDV WHERE MADP=?";
+        try(Connection conn = ConnectionUtils.getMyConnection()){
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1,maDatPhong);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                CTDichVu currentCTDichVu = new CTDichVu(
+                    rs.getString("MADP"),
+                    rs.getString("MADV"),
+                    rs.getInt("SOLUONG")
+                );
+    dsCTDichVu.add(currentCTDichVu);
+}
+            } catch (SQLException e) {
+        System.err.println("Lỗi khi truy vấn dữ liệu nhân viên: " + e.getMessage());
+} catch (ClassNotFoundException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+      return dsCTDichVu;
+    }
+    
 }

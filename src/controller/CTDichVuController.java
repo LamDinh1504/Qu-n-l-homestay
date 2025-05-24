@@ -6,6 +6,9 @@ package controller;
 
 import dao.CTDichVuDAO;
 import dao.DichVuDAO;
+import java.util.ArrayList;
+import model.CTDichVu;
+import model.DichVu;
 
 /**
  *
@@ -13,10 +16,21 @@ import dao.DichVuDAO;
  */
 public class CTDichVuController {
     private CTDichVuDAO CTdichvuModel;
+    private DichVuDAO dichvuModel;
     
     public CTDichVuController(){
         CTdichvuModel = new CTDichVuDAO();
+        dichvuModel =new DichVuDAO();
     }
+
+    
+    
+    public ArrayList<DichVu> getAllDichVu() {
+        return dichvuModel.getAllDichVu();
+    } 
+     public ArrayList<CTDichVu> getAllCTDichVu() {
+        return CTdichvuModel.getAllCTDichVu();
+    } 
      public boolean addCTDichVuIntoModel(String maDatPhong,String maDichVu,int soLuong){
         if(maDatPhong.trim().isEmpty() || maDichVu.trim().isEmpty()){
             return false;
@@ -42,7 +56,6 @@ public class CTDichVuController {
     try {
             return CTdichvuModel.deleteCTDichVu(maDatPhong,maDichVu);
          } catch (Exception e) {
-        // Bạn có thể log lỗi tại đây nếu cần
             return -1;
         }
     }
@@ -53,7 +66,6 @@ public class CTDichVuController {
         }
         else{
             try{
-                //Khi sử dụng truy xuất SQL thì nên sử dụng trong Try Catch.
                 CTdichvuModel.updateCTDichVu(maDatPhong,maDichVu,soLuong);
                 return true;
             }
@@ -62,5 +74,14 @@ public class CTDichVuController {
                 return false;
             }
         }
+    }
+    public int tongTienDichVu(ArrayList<CTDichVu> ctDichVu,ArrayList<DichVu> dv,String maDatPhong) {
+        int sum=0;
+        for(CTDichVu ctdv :ctDichVu) {
+            if(ctdv.getMaDatPhong()==maDatPhong) {
+                sum+=ctdv.calculator(dv);
+            }
+        }
+        return sum;
     }
 }

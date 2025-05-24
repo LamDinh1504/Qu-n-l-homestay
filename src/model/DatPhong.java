@@ -4,6 +4,9 @@
  */
 package model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
@@ -77,7 +80,17 @@ public class DatPhong {
     public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
     }
-    
+    public int soNgayO() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+            // Parse chuỗi thành LocalDate
+            LocalDate date1 = LocalDate.parse(ngayBatDau, formatter);
+            LocalDate date2 = LocalDate.parse(ngayTra, formatter);
+
+            // Tính số ngày giữa 2 ngày
+            int daysBetween = (int) ChronoUnit.DAYS.between(date2, date1);
+            return daysBetween;
+    }
     
     
 }

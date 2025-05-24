@@ -244,7 +244,7 @@ public class HomeForm extends javax.swing.JFrame {
         JlbKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JlbKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         JlbKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/animal_16434247.png"))); // NOI18N
-        JlbKhachHang.setText("Khách hàng");
+        JlbKhachHang.setText("Hóa đơn");
 
         javax.swing.GroupLayout KhachHangLayout = new javax.swing.GroupLayout(KhachHang);
         KhachHang.setLayout(KhachHangLayout);

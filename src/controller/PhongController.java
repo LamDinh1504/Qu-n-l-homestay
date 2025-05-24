@@ -7,7 +7,9 @@ package controller;
 import dao.DatPhongDAO;
 import dao.KhachHangDAO;
 import dao.NhanVienDAO;
+import model.DatPhong;
 import model.KhachHang;
+import model.NhanVien;
 
 /**
  *
@@ -117,4 +119,14 @@ public class PhongController {
         }
     }
 }
+     public DatPhong getDatPhong(String maDatPhong){
+        DatPhong datPhong = new DatPhong();
+        try{
+            datPhong = datPhongModel.getDatPhong(maDatPhong);
+            return datPhong;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }   
 }

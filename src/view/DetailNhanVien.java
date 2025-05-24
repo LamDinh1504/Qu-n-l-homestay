@@ -66,7 +66,7 @@ public class DetailNhanVien extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("THÔNG TIN CHI TIẾT KHÁCH HÀNG");
+        jLabel1.setText("THÔNG TIN CHI TIẾT NHÂN VIÊN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,7 +75,7 @@ public class DetailNhanVien extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(122, 122, 122)
                 .addComponent(jLabel1)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,27 +88,38 @@ public class DetailNhanVien extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Họ và tên");
 
+        HoTen.setEditable(false);
         HoTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        HoTen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        HoTen.setFocusable(false);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Giới tính");
 
+        GioiTinh.setEditable(false);
         GioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        GioiTinh.setFocusable(false);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Số điện thoại");
 
+        SoDienThoai.setEditable(false);
         SoDienThoai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        SoDienThoai.setFocusable(false);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Địa chỉ");
 
+        DiaChi.setEditable(false);
         DiaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DiaChi.setFocusable(false);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Email");
 
+        Email.setEditable(false);
         Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Email.setFocusable(false);
 
         jButton1.setBackground(new java.awt.Color(0, 153, 153));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -123,7 +134,9 @@ public class DetailNhanVien extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Chức vụ");
 
+        ChucVu.setEditable(false);
         ChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ChucVu.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

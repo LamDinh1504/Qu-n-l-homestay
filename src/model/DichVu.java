@@ -8,16 +8,16 @@ package model;
  *
  * @author ASUS
  */
-public class DichVu {
-    private String maDichVu;
-    private String tenDichVu;
-    private double donGia;
-    private String donViTinh;
+public  abstract class DichVu {
+    protected String maDichVu;
+    protected String tenDichVu;
+    protected int donGia;
+    protected String donViTinh;
 
     public DichVu() {
     }
 
-    public DichVu(String maDichVu, String tenDichVu, double donGia, String donViTinh) {
+    public DichVu(String maDichVu, String tenDichVu, int donGia, String donViTinh) {
         this.maDichVu = maDichVu;
         this.tenDichVu = tenDichVu;
         this.donGia = donGia;
@@ -32,7 +32,7 @@ public class DichVu {
         return tenDichVu;
     }
 
-    public double getDonGia() {
+    public int getDonGia() {
         return donGia;
     }
 
@@ -48,12 +48,12 @@ public class DichVu {
         this.tenDichVu = tenDichVu;
     }
 
-    public void setDonGia(double donGia) {
+    public void setDonGia(int donGia) {
         this.donGia = donGia;
     }
 
     public void setDonViTinh(String donViTinh) {
         this.donViTinh = donViTinh;
     }
-    
 }
+

@@ -20,7 +20,7 @@ public class DichVuController {
     public DichVuController(){
         dichvuModel = new DichVuDAO();
     }
-    
+
     public Object[][] getDichVuFromModel() {
         ArrayList<DichVu> dichVuList = dichvuModel.getAllDichVu();
         

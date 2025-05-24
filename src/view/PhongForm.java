@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JFrame;
+import javax.swing.JTable;
 
 /**
  *
@@ -15,10 +16,14 @@ public class PhongForm extends javax.swing.JPanel {
     /**
      * Creates new form PhongForm
      */
+    private String maDatPhong101;
+    private String maKhachHang;
+    private JTable TableDV;
     public PhongForm() {
         initComponents();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1132,6 +1137,7 @@ public class PhongForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
+
         String maPhong=MaPhong.getText();
         String kieuPhongText=KieuPhong.getText();
         String kieuPhong="";
@@ -1147,18 +1153,20 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(Button.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(jPanel9,maPhong,TinhTrang,Button);
+            DatPhongForm dh=new DatPhongForm(jPanel9,maPhong,TinhTrang,Button,null);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
+            this.maDatPhong101=dh.getMaDatPhong();
+            this.maKhachHang=dh.getMaKhachHang();
+            this.TableDV=dh.getTableDV();
         }
         
         else {
-            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong);
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,maDatPhong101,maKhachHang,TableDV);
             bill.setLocationRelativeTo(null);
             bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             bill.setVisible(true);
-        
         }
     }//GEN-LAST:event_ButtonActionPerformed
 
