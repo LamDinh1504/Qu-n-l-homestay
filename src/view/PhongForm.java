@@ -4,8 +4,12 @@
  */
 package view;
 
+import controller.CTDichVuController;
+import controller.PhongController;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import model.DatPhong;
 
 /**
  *
@@ -19,8 +23,72 @@ public class PhongForm extends javax.swing.JPanel {
     private String maDatPhong101;
     private String maKhachHang;
     private JTable TableDV;
+    private PhongController phong;
+    private CTDichVuController ctdichVu;
     public PhongForm() {
+        this.phong=new PhongController();
+        this.ctdichVu=new CTDichVuController();
         initComponents();
+        if(phong.check(MaPhongP101.getText())) {
+            JpnP101.setBackground(new Color(0, 143, 143));
+            TinhTrangP101.setText("Tình trạng: Đang sử dụng");
+            ButtonP101.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP201.getText())) {
+            JpnP201.setBackground(new Color(0, 143, 143));
+            TinhTrangP201.setText("Tình trạng: Đang sử dụng");
+            ButtonP201.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP301.getText())) {
+            JpnP301.setBackground(new Color(0, 143, 143));
+            TinhTrangP301.setText("Tình trạng: Đang sử dụng");
+            ButtonP301.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP401.getText())) {
+            JpnP401.setBackground(new Color(0, 143, 143));
+            TinhTrangP401.setText("Tình trạng: Đang sử dụng");
+            ButtonP401.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP102.getText())) {
+            JpnP102.setBackground(new Color(0, 143, 143));
+            TinhTrangP102.setText("Tình trạng: Đang sử dụng");
+            ButtonP102.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP202.getText())) {
+            JpnP202.setBackground(new Color(0, 143, 143));
+            TinhTrangP202.setText("Tình trạng: Đang sử dụng");
+            ButtonP202.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP302.getText())) {
+            JpnP302.setBackground(new Color(0, 143, 143));
+            TinhTrangP302.setText("Tình trạng: Đang sử dụng");
+            ButtonP302.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP402.getText())) {
+            JpnP402.setBackground(new Color(0, 143, 143));
+            TinhTrangP402.setText("Tình trạng: Đang sử dụng");
+            ButtonP402.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP103.getText())) {
+            JpnP103.setBackground(new Color(0, 143, 143));
+            TinhTrangP103.setText("Tình trạng: Đang sử dụng");
+            ButtonP103.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP203.getText())) {
+            JpnP203.setBackground(new Color(0, 143, 143));
+            TinhTrangP203.setText("Tình trạng: Đang sử dụng");
+            ButtonP203.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP303.getText())) {
+            JpnP303.setBackground(new Color(0, 143, 143));
+            TinhTrangP303.setText("Tình trạng: Đang sử dụng");
+            ButtonP303.setText("Thanh toán");
+        }
+        if(phong.check(MaPhongP403.getText())) {
+            JpnP403.setBackground(new Color(0, 143, 143));
+            TinhTrangP403.setText("Tình trạng: Đang sử dụng");
+            ButtonP403.setText("Thanh toán");
+        }
     }
 
     
@@ -36,87 +104,87 @@ public class PhongForm extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        MaPhong = new javax.swing.JLabel();
-        KieuPhong = new javax.swing.JLabel();
-        LoaiPhong = new javax.swing.JLabel();
-        TinhTrang = new javax.swing.JLabel();
-        Button = new javax.swing.JButton();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        JpnP101 = new javax.swing.JPanel();
+        MaPhongP101 = new javax.swing.JLabel();
+        KieuPhongP101 = new javax.swing.JLabel();
+        LoaiPhongP101 = new javax.swing.JLabel();
+        TinhTrangP101 = new javax.swing.JLabel();
+        ButtonP101 = new javax.swing.JButton();
+        JpnP102 = new javax.swing.JPanel();
+        MaPhongP102 = new javax.swing.JLabel();
+        KieuPhongP102 = new javax.swing.JLabel();
+        LoaiPhongP102 = new javax.swing.JLabel();
+        TinhTrangP102 = new javax.swing.JLabel();
+        ButtonP102 = new javax.swing.JButton();
+        JpnP103 = new javax.swing.JPanel();
+        MaPhongP103 = new javax.swing.JLabel();
+        KieuPhongP103 = new javax.swing.JLabel();
+        LoaiPhongP103 = new javax.swing.JLabel();
+        TinhTrangP103 = new javax.swing.JLabel();
+        ButtonP103 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        JpnP201 = new javax.swing.JPanel();
+        MaPhongP201 = new javax.swing.JLabel();
+        KieuPhongP201 = new javax.swing.JLabel();
+        LoaiPhongP201 = new javax.swing.JLabel();
+        TinhTrangP201 = new javax.swing.JLabel();
+        ButtonP201 = new javax.swing.JButton();
+        JpnP202 = new javax.swing.JPanel();
+        MaPhongP202 = new javax.swing.JLabel();
+        KieuPhongP202 = new javax.swing.JLabel();
+        LoaiPhongP202 = new javax.swing.JLabel();
+        TinhTrangP202 = new javax.swing.JLabel();
+        ButtonP202 = new javax.swing.JButton();
+        JpnP203 = new javax.swing.JPanel();
+        MaPhongP203 = new javax.swing.JLabel();
+        KieuPhongP203 = new javax.swing.JLabel();
+        LoaiPhongP203 = new javax.swing.JLabel();
+        TinhTrangP203 = new javax.swing.JLabel();
+        ButtonP203 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
+        JpnP301 = new javax.swing.JPanel();
+        MaPhongP301 = new javax.swing.JLabel();
+        KieuPhongP301 = new javax.swing.JLabel();
+        LoaiPhongP301 = new javax.swing.JLabel();
+        TinhTrangP301 = new javax.swing.JLabel();
+        ButtonP301 = new javax.swing.JButton();
+        JpnP302 = new javax.swing.JPanel();
+        MaPhongP302 = new javax.swing.JLabel();
+        KieuPhongP302 = new javax.swing.JLabel();
+        LoaiPhongP302 = new javax.swing.JLabel();
+        TinhTrangP302 = new javax.swing.JLabel();
+        ButtonP302 = new javax.swing.JButton();
+        JpnP303 = new javax.swing.JPanel();
+        MaPhongP303 = new javax.swing.JLabel();
+        KieuPhongP303 = new javax.swing.JLabel();
+        LoaiPhongP303 = new javax.swing.JLabel();
+        TinhTrangP303 = new javax.swing.JLabel();
+        ButtonP303 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
-        jPanel19 = new javax.swing.JPanel();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
-        jPanel20 = new javax.swing.JPanel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jButton13 = new javax.swing.JButton();
+        JpnP401 = new javax.swing.JPanel();
+        MaPhongP401 = new javax.swing.JLabel();
+        KieuPhongP401 = new javax.swing.JLabel();
+        LoaiPhongP401 = new javax.swing.JLabel();
+        TinhTrangP401 = new javax.swing.JLabel();
+        ButtonP401 = new javax.swing.JButton();
+        JpnP402 = new javax.swing.JPanel();
+        MaPhongP402 = new javax.swing.JLabel();
+        KieuPhongP402 = new javax.swing.JLabel();
+        LoaiPhongP402 = new javax.swing.JLabel();
+        TinhTrangP402 = new javax.swing.JLabel();
+        ButtonP402 = new javax.swing.JButton();
+        JpnP403 = new javax.swing.JPanel();
+        MaPhongP403 = new javax.swing.JLabel();
+        KieuPhongP403 = new javax.swing.JLabel();
+        LoaiPhongP403 = new javax.swing.JLabel();
+        TinhTrangP403 = new javax.swing.JLabel();
+        ButtonP403 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
 
@@ -145,194 +213,194 @@ public class PhongForm extends javax.swing.JPanel {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel9.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP101.setBackground(new java.awt.Color(250, 140, 0));
 
-        MaPhong.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        MaPhong.setForeground(new java.awt.Color(255, 255, 255));
-        MaPhong.setText("P101");
+        MaPhongP101.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP101.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP101.setText("P101");
 
-        KieuPhong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        KieuPhong.setForeground(new java.awt.Color(255, 255, 255));
-        KieuPhong.setText("Kiểu phòng: Giường đôi");
+        KieuPhongP101.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP101.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP101.setText("Kiểu phòng: Giường đôi");
 
-        LoaiPhong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LoaiPhong.setForeground(new java.awt.Color(255, 255, 255));
-        LoaiPhong.setText("Loại phòng: Thường");
+        LoaiPhongP101.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP101.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP101.setText("Loại phòng: Thường");
 
-        TinhTrang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        TinhTrang.setForeground(new java.awt.Color(255, 255, 255));
-        TinhTrang.setText("Tình trạng: Trống");
+        TinhTrangP101.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP101.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP101.setText("Tình trạng: Trống");
 
-        Button.setBackground(new java.awt.Color(51, 51, 51));
-        Button.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Button.setForeground(new java.awt.Color(255, 255, 255));
-        Button.setText("Đặt phòng");
-        Button.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP101.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP101.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP101.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP101.setText("Đặt phòng");
+        ButtonP101.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonActionPerformed(evt);
+                ButtonP101ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout JpnP101Layout = new javax.swing.GroupLayout(JpnP101);
+        JpnP101.setLayout(JpnP101Layout);
+        JpnP101Layout.setHorizontalGroup(
+            JpnP101Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP101Layout.createSequentialGroup()
                 .addGap(102, 102, 102)
-                .addComponent(MaPhong)
+                .addComponent(MaPhongP101)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP101Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LoaiPhong)
-                    .addComponent(KieuPhong)
-                    .addComponent(TinhTrang)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(JpnP101Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LoaiPhongP101)
+                    .addComponent(KieuPhongP101)
+                    .addComponent(TinhTrangP101)
+                    .addGroup(JpnP101Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(Button)))
+                        .addComponent(ButtonP101)))
                 .addGap(48, 48, 48))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        JpnP101Layout.setVerticalGroup(
+            JpnP101Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP101Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(MaPhong)
+                .addComponent(MaPhongP101)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(KieuPhong)
+                .addComponent(KieuPhongP101)
                 .addGap(12, 12, 12)
-                .addComponent(LoaiPhong)
+                .addComponent(LoaiPhongP101)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TinhTrang)
+                .addComponent(TinhTrangP101)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(Button)
+                .addComponent(ButtonP101)
                 .addContainerGap())
         );
 
-        jPanel11.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP102.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP102.setPreferredSize(new java.awt.Dimension(262, 186));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("P102");
+        MaPhongP102.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP102.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP102.setText("P102");
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Kiểu phòng: Giường đơn");
+        KieuPhongP102.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP102.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP102.setText("Kiểu phòng: Giường đơn");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Loại phòng: Thường");
+        LoaiPhongP102.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP102.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP102.setText("Loại phòng: Thường");
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Tình trạng: Trống");
+        TinhTrangP102.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP102.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP102.setText("Tình trạng: Trống");
 
-        jButton3.setBackground(new java.awt.Color(51, 51, 51));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Đặt phòng");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP102.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP102.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP102.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP102.setText("Đặt phòng");
+        ButtonP102.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ButtonP102ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                            .addComponent(jLabel13)
+        javax.swing.GroupLayout JpnP102Layout = new javax.swing.GroupLayout(JpnP102);
+        JpnP102.setLayout(JpnP102Layout);
+        JpnP102Layout.setHorizontalGroup(
+            JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP102Layout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
+                .addGroup(JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TinhTrangP102)
+                    .addGroup(JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP102Layout.createSequentialGroup()
+                            .addComponent(MaPhongP102)
                             .addGap(97, 97, 97))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                            .addComponent(jLabel14)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP102Layout.createSequentialGroup()
+                            .addComponent(KieuPhongP102)
                             .addGap(46, 46, 46)))
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton3)
-                        .addComponent(jLabel15))))
+                    .addGroup(JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(ButtonP102)
+                        .addComponent(LoaiPhongP102))))
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        JpnP102Layout.setVerticalGroup(
+            JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP102Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel13)
+                .addComponent(MaPhongP102)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
+                .addComponent(KieuPhongP102)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel15)
+                .addComponent(LoaiPhongP102)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addComponent(TinhTrangP102)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(ButtonP102)
+                .addContainerGap())
         );
 
-        jPanel12.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP103.setBackground(new java.awt.Color(250, 140, 0));
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("P103");
+        MaPhongP103.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP103.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP103.setText("P103");
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Kiểu phòng: Giường đơn");
+        KieuPhongP103.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP103.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP103.setText("Kiểu phòng: Giường đơn");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Loại phòng: Thường");
+        LoaiPhongP103.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP103.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP103.setText("Loại phòng: Thường");
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Tình trạng: Trống");
+        TinhTrangP103.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP103.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP103.setText("Tình trạng: Trống");
 
-        jButton4.setBackground(new java.awt.Color(51, 51, 51));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Đặt phòng");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP103.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP103.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP103.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP103.setText("Đặt phòng");
+        ButtonP103.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                ButtonP103ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jButton4))
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20))
+        javax.swing.GroupLayout JpnP103Layout = new javax.swing.GroupLayout(JpnP103);
+        JpnP103.setLayout(JpnP103Layout);
+        JpnP103Layout.setHorizontalGroup(
+            JpnP103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP103Layout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
+                .addGroup(JpnP103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP103Layout.createSequentialGroup()
+                        .addGroup(JpnP103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(KieuPhongP103)
+                            .addComponent(TinhTrangP103)
+                            .addGroup(JpnP103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(ButtonP103)
+                                .addComponent(LoaiPhongP103)))
                         .addGap(46, 46, 46))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP103Layout.createSequentialGroup()
+                        .addComponent(MaPhongP103)
                         .addGap(99, 99, 99))))
         );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+        JpnP103Layout.setVerticalGroup(
+            JpnP103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP103Layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addComponent(jLabel17)
+                .addComponent(MaPhongP103)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel18)
+                .addComponent(KieuPhongP103)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel19)
+                .addComponent(LoaiPhongP103)
                 .addGap(12, 12, 12)
-                .addComponent(jLabel20)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(TinhTrangP103)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonP103)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -340,21 +408,21 @@ public class PhongForm extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP102, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP103, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addComponent(JpnP103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -382,208 +450,202 @@ public class PhongForm extends javax.swing.JPanel {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel10.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP201.setBackground(new java.awt.Color(250, 140, 0));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("P201");
+        MaPhongP201.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP201.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP201.setText("P201");
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Kiểu phòng: Giường đơn");
+        KieuPhongP201.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP201.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP201.setText("Kiểu phòng: Giường đơn");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Loại phòng: VIP");
+        LoaiPhongP201.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP201.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP201.setText("Loại phòng: VIP");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Tình trạng: Trống");
+        TinhTrangP201.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP201.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP201.setText("Tình trạng: Trống");
 
-        jButton5.setBackground(new java.awt.Color(51, 51, 51));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Đặt phòng");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP201.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP201.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP201.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP201.setText("Đặt phòng");
+        ButtonP201.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                ButtonP201ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout JpnP201Layout = new javax.swing.GroupLayout(JpnP201);
+        JpnP201.setLayout(JpnP201Layout);
+        JpnP201Layout.setHorizontalGroup(
+            JpnP201Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP201Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
+                .addGroup(JpnP201Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP201Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(JpnP201Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP201Layout.createSequentialGroup()
+                                .addComponent(MaPhongP201)
                                 .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP201Layout.createSequentialGroup()
+                                .addComponent(KieuPhongP201)
                                 .addGap(49, 49, 49)))
-                        .addGroup(jPanel10Layout.createSequentialGroup()
-                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel12))
+                        .addGroup(JpnP201Layout.createSequentialGroup()
+                            .addGroup(JpnP201Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LoaiPhongP201)
+                                .addComponent(TinhTrangP201))
                             .addGap(19, 19, 19)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP201Layout.createSequentialGroup()
+                        .addComponent(ButtonP201)
                         .addGap(74, 74, 74))))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        JpnP201Layout.setVerticalGroup(
+            JpnP201Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP201Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
+                .addComponent(MaPhongP201)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
+                .addComponent(KieuPhongP201)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
+                .addComponent(LoaiPhongP201)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
+                .addComponent(TinhTrangP201)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addComponent(ButtonP201)
                 .addContainerGap())
         );
 
-        jPanel13.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP202.setBackground(new java.awt.Color(250, 140, 0));
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("P202");
+        MaPhongP202.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP202.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP202.setText("P202");
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Kiểu phòng: Giường đôi");
+        KieuPhongP202.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP202.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP202.setText("Kiểu phòng: Giường đôi");
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Loại phòng: Thường");
+        LoaiPhongP202.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP202.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP202.setText("Loại phòng: Thường");
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Tình trạng: Trống");
+        TinhTrangP202.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP202.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP202.setText("Tình trạng: Trống");
 
-        jButton6.setBackground(new java.awt.Color(51, 51, 51));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Đặt phòng");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP202.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP202.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP202.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP202.setText("Đặt phòng");
+        ButtonP202.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                ButtonP202ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
+        javax.swing.GroupLayout JpnP202Layout = new javax.swing.GroupLayout(JpnP202);
+        JpnP202.setLayout(JpnP202Layout);
+        JpnP202Layout.setHorizontalGroup(
+            JpnP202Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP202Layout.createSequentialGroup()
                 .addContainerGap(66, Short.MAX_VALUE)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addGap(49, 49, 49)))
-                        .addGroup(jPanel13Layout.createSequentialGroup()
-                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel23)
-                                .addComponent(jLabel24))
-                            .addGap(19, 19, 19)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addComponent(jButton6)
-                        .addGap(74, 74, 74))))
+                .addGroup(JpnP202Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JpnP202Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP202Layout.createSequentialGroup()
+                            .addComponent(MaPhongP202)
+                            .addGap(103, 103, 103))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP202Layout.createSequentialGroup()
+                            .addComponent(KieuPhongP202)
+                            .addGap(49, 49, 49)))
+                    .addGroup(JpnP202Layout.createSequentialGroup()
+                        .addGroup(JpnP202Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ButtonP202)
+                            .addGroup(JpnP202Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LoaiPhongP202)
+                                .addComponent(TinhTrangP202)))
+                        .addGap(19, 19, 19))))
         );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
+        JpnP202Layout.setVerticalGroup(
+            JpnP202Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP202Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel21)
+                .addComponent(MaPhongP202)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel22)
+                .addComponent(KieuPhongP202)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel23)
+                .addComponent(LoaiPhongP202)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addContainerGap())
+                .addComponent(TinhTrangP202)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonP202)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jPanel14.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP203.setBackground(new java.awt.Color(250, 140, 0));
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("P203");
+        MaPhongP203.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP203.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP203.setText("P203");
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Kiểu phòng: Giường đơn");
+        KieuPhongP203.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP203.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP203.setText("Kiểu phòng: Giường đơn");
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("Loại phòng: VIP");
+        LoaiPhongP203.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP203.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP203.setText("Loại phòng: VIP");
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Tình trạng: Trống");
+        TinhTrangP203.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP203.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP203.setText("Tình trạng: Trống");
 
-        jButton7.setBackground(new java.awt.Color(51, 51, 51));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Đặt phòng");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP203.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP203.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP203.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP203.setText("Đặt phòng");
+        ButtonP203.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                ButtonP203ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        javax.swing.GroupLayout JpnP203Layout = new javax.swing.GroupLayout(JpnP203);
+        JpnP203.setLayout(JpnP203Layout);
+        JpnP203Layout.setHorizontalGroup(
+            JpnP203Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP203Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                                .addComponent(jLabel25)
-                                .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addGap(49, 49, 49)))
-                        .addGroup(jPanel14Layout.createSequentialGroup()
-                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel27)
-                                .addComponent(jLabel28))
-                            .addGap(19, 19, 19)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                        .addComponent(jButton7)
+                .addGroup(JpnP203Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP203Layout.createSequentialGroup()
+                        .addGroup(JpnP203Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JpnP203Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(MaPhongP203))
+                            .addComponent(LoaiPhongP203)
+                            .addComponent(TinhTrangP203)
+                            .addComponent(KieuPhongP203))
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP203Layout.createSequentialGroup()
+                        .addComponent(ButtonP203)
                         .addGap(75, 75, 75))))
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        JpnP203Layout.setVerticalGroup(
+            JpnP203Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP203Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel25)
+                .addComponent(MaPhongP203)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(KieuPhongP203)
+                .addGap(12, 12, 12)
+                .addComponent(LoaiPhongP203)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel26)
+                .addComponent(TinhTrangP203)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel28)
-                .addGap(18, 18, 18)
-                .addComponent(jButton7)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(ButtonP203)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -591,21 +653,21 @@ public class PhongForm extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP201, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP202, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP203, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP201, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP202, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addComponent(JpnP203, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
@@ -633,208 +695,204 @@ public class PhongForm extends javax.swing.JPanel {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel15.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP301.setBackground(new java.awt.Color(250, 140, 0));
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("P301");
+        MaPhongP301.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP301.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP301.setText("P301");
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("Kiểu phòng: Giường đôi");
+        KieuPhongP301.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP301.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP301.setText("Kiểu phòng: Giường đôi");
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("Loại phòng: VIP");
+        LoaiPhongP301.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP301.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP301.setText("Loại phòng: VIP");
 
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Tình trạng: Trống");
+        TinhTrangP301.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP301.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP301.setText("Tình trạng: Trống");
 
-        jButton8.setBackground(new java.awt.Color(51, 51, 51));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Đặt phòng");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP301.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP301.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP301.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP301.setText("Đặt phòng");
+        ButtonP301.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                ButtonP301ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
+        javax.swing.GroupLayout JpnP301Layout = new javax.swing.GroupLayout(JpnP301);
+        JpnP301.setLayout(JpnP301Layout);
+        JpnP301Layout.setHorizontalGroup(
+            JpnP301Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP301Layout.createSequentialGroup()
                 .addContainerGap(68, Short.MAX_VALUE)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addComponent(jLabel29)
+                .addGroup(JpnP301Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP301Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(JpnP301Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP301Layout.createSequentialGroup()
+                                .addComponent(MaPhongP301)
                                 .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addComponent(jLabel30)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP301Layout.createSequentialGroup()
+                                .addComponent(KieuPhongP301)
                                 .addGap(49, 49, 49)))
-                        .addGroup(jPanel15Layout.createSequentialGroup()
-                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel31)
-                                .addComponent(jLabel32))
+                        .addGroup(JpnP301Layout.createSequentialGroup()
+                            .addGroup(JpnP301Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LoaiPhongP301)
+                                .addComponent(TinhTrangP301))
                             .addGap(19, 19, 19)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                        .addComponent(jButton8)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP301Layout.createSequentialGroup()
+                        .addComponent(ButtonP301)
                         .addGap(74, 74, 74))))
         );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
+        JpnP301Layout.setVerticalGroup(
+            JpnP301Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP301Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel29)
+                .addComponent(MaPhongP301)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel30)
+                .addComponent(KieuPhongP301)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel31)
+                .addComponent(LoaiPhongP301)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel32)
+                .addComponent(TinhTrangP301)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton8)
+                .addComponent(ButtonP301)
                 .addContainerGap())
         );
 
-        jPanel16.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP302.setBackground(new java.awt.Color(250, 140, 0));
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText("P302");
+        MaPhongP302.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP302.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP302.setText("P302");
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("Kiểu phòng: Giường đơn");
+        KieuPhongP302.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP302.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP302.setText("Kiểu phòng: Giường đơn");
 
-        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("Loại phòng: VIP");
+        LoaiPhongP302.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP302.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP302.setText("Loại phòng: VIP");
 
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setText("Tình trạng: Trống");
+        TinhTrangP302.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP302.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP302.setText("Tình trạng: Trống");
 
-        jButton9.setBackground(new java.awt.Color(51, 51, 51));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Đặt phòng");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP302.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP302.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP302.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP302.setText("Đặt phòng");
+        ButtonP302.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                ButtonP302ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                                .addComponent(jLabel33)
-                                .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                                .addComponent(jLabel34)
-                                .addGap(49, 49, 49)))
-                        .addGroup(jPanel16Layout.createSequentialGroup()
-                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel35)
-                                .addComponent(jLabel36))
-                            .addGap(19, 19, 19)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                        .addComponent(jButton9)
-                        .addGap(74, 74, 74))))
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel34)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel35)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel36)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton9)
-                .addContainerGap())
-        );
-
-        jPanel17.setBackground(new java.awt.Color(250, 140, 0));
-
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel37.setText("P303");
-
-        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel38.setText("Kiểu phòng: Giường đôi");
-
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("Loại phòng: VIP");
-
-        jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel40.setText("Tình trạng: Trống");
-
-        jButton10.setBackground(new java.awt.Color(51, 51, 51));
-        jButton10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("Đặt phòng");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
+        javax.swing.GroupLayout JpnP302Layout = new javax.swing.GroupLayout(JpnP302);
+        JpnP302.setLayout(JpnP302Layout);
+        JpnP302Layout.setHorizontalGroup(
+            JpnP302Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP302Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                                .addComponent(jLabel37)
+                .addGroup(JpnP302Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP302Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(JpnP302Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP302Layout.createSequentialGroup()
+                                .addComponent(MaPhongP302)
                                 .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                                .addComponent(jLabel38)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP302Layout.createSequentialGroup()
+                                .addComponent(KieuPhongP302)
                                 .addGap(49, 49, 49)))
-                        .addGroup(jPanel17Layout.createSequentialGroup()
-                            .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel39)
-                                .addComponent(jLabel40))
+                        .addGroup(JpnP302Layout.createSequentialGroup()
+                            .addGroup(JpnP302Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LoaiPhongP302)
+                                .addComponent(TinhTrangP302))
                             .addGap(19, 19, 19)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                        .addComponent(jButton10)
-                        .addGap(81, 81, 81))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP302Layout.createSequentialGroup()
+                        .addComponent(ButtonP302)
+                        .addGap(72, 72, 72))))
         );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
+        JpnP302Layout.setVerticalGroup(
+            JpnP302Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP302Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel37)
+                .addComponent(MaPhongP302)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel38)
+                .addComponent(KieuPhongP302)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel39)
+                .addComponent(LoaiPhongP302)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel40)
-                .addGap(18, 18, 18)
-                .addComponent(jButton10)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(TinhTrangP302)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonP302)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        JpnP303.setBackground(new java.awt.Color(250, 140, 0));
+
+        MaPhongP303.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP303.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP303.setText("P303");
+
+        KieuPhongP303.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP303.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP303.setText("Kiểu phòng: Giường đôi");
+
+        LoaiPhongP303.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP303.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP303.setText("Loại phòng: VIP");
+
+        TinhTrangP303.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP303.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP303.setText("Tình trạng: Trống");
+
+        ButtonP303.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP303.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP303.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP303.setText("Đặt phòng");
+        ButtonP303.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonP303ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JpnP303Layout = new javax.swing.GroupLayout(JpnP303);
+        JpnP303.setLayout(JpnP303Layout);
+        JpnP303Layout.setHorizontalGroup(
+            JpnP303Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP303Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JpnP303Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP303Layout.createSequentialGroup()
+                        .addGroup(JpnP303Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JpnP303Layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(MaPhongP303))
+                            .addComponent(LoaiPhongP303)
+                            .addComponent(TinhTrangP303)
+                            .addComponent(KieuPhongP303))
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP303Layout.createSequentialGroup()
+                        .addComponent(ButtonP303)
+                        .addGap(76, 76, 76))))
+        );
+        JpnP303Layout.setVerticalGroup(
+            JpnP303Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP303Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(MaPhongP303)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(KieuPhongP303)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LoaiPhongP303)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TinhTrangP303)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonP303)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -842,20 +900,20 @@ public class PhongForm extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP301, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP302, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP303, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP301, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP302, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP303, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -884,208 +942,204 @@ public class PhongForm extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel18.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP401.setBackground(new java.awt.Color(250, 140, 0));
 
-        jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel41.setText("P401");
+        MaPhongP401.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP401.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP401.setText("P401");
 
-        jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel42.setText("Kiểu phòng: Giường đơn");
+        KieuPhongP401.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP401.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP401.setText("Kiểu phòng: Giường đơn");
 
-        jLabel43.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel43.setText("Loại phòng: VIP");
+        LoaiPhongP401.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP401.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP401.setText("Loại phòng: VIP");
 
-        jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel44.setText("Tình trạng: Trống");
+        TinhTrangP401.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP401.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP401.setText("Tình trạng: Trống");
 
-        jButton11.setBackground(new java.awt.Color(51, 51, 51));
-        jButton11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setText("Đặt phòng");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP401.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP401.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP401.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP401.setText("Đặt phòng");
+        ButtonP401.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                ButtonP401ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
+        javax.swing.GroupLayout JpnP401Layout = new javax.swing.GroupLayout(JpnP401);
+        JpnP401.setLayout(JpnP401Layout);
+        JpnP401Layout.setHorizontalGroup(
+            JpnP401Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP401Layout.createSequentialGroup()
                 .addContainerGap(75, Short.MAX_VALUE)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                                .addComponent(jLabel41)
+                .addGroup(JpnP401Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP401Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(JpnP401Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP401Layout.createSequentialGroup()
+                                .addComponent(MaPhongP401)
                                 .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                                .addComponent(jLabel42)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP401Layout.createSequentialGroup()
+                                .addComponent(KieuPhongP401)
                                 .addGap(49, 49, 49)))
-                        .addGroup(jPanel18Layout.createSequentialGroup()
-                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel43)
-                                .addComponent(jLabel44))
+                        .addGroup(JpnP401Layout.createSequentialGroup()
+                            .addGroup(JpnP401Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LoaiPhongP401)
+                                .addComponent(TinhTrangP401))
                             .addGap(19, 19, 19)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                        .addComponent(jButton11)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP401Layout.createSequentialGroup()
+                        .addComponent(ButtonP401)
                         .addGap(74, 74, 74))))
         );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
+        JpnP401Layout.setVerticalGroup(
+            JpnP401Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP401Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel41)
+                .addComponent(MaPhongP401)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel42)
+                .addComponent(KieuPhongP401)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel43)
+                .addComponent(LoaiPhongP401)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel44)
+                .addComponent(TinhTrangP401)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton11)
+                .addComponent(ButtonP401)
                 .addContainerGap())
         );
 
-        jPanel19.setBackground(new java.awt.Color(250, 140, 0));
+        JpnP402.setBackground(new java.awt.Color(250, 140, 0));
 
-        jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel45.setText("P402");
+        MaPhongP402.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP402.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP402.setText("P402");
 
-        jLabel46.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel46.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel46.setText("Kiểu phòng: Giường đôi");
+        KieuPhongP402.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP402.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP402.setText("Kiểu phòng: Giường đôi");
 
-        jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel47.setText("Loại phòng: VIP");
+        LoaiPhongP402.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP402.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP402.setText("Loại phòng: VIP");
 
-        jLabel48.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel48.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel48.setText("Tình trạng: Trống");
+        TinhTrangP402.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP402.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP402.setText("Tình trạng: Trống");
 
-        jButton12.setBackground(new java.awt.Color(51, 51, 51));
-        jButton12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setText("Đặt phòng");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        ButtonP402.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP402.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP402.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP402.setText("Đặt phòng");
+        ButtonP402.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                ButtonP402ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
-        jPanel19.setLayout(jPanel19Layout);
-        jPanel19Layout.setHorizontalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                                .addComponent(jLabel45)
-                                .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                                .addComponent(jLabel46)
-                                .addGap(49, 49, 49)))
-                        .addGroup(jPanel19Layout.createSequentialGroup()
-                            .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel47)
-                                .addComponent(jLabel48))
-                            .addGap(19, 19, 19)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                        .addComponent(jButton12)
-                        .addGap(74, 74, 74))))
-        );
-        jPanel19Layout.setVerticalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel45)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel46)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel47)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel48)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton12)
-                .addContainerGap())
-        );
-
-        jPanel20.setBackground(new java.awt.Color(250, 140, 0));
-
-        jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setText("P403");
-
-        jLabel50.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel50.setText("Kiểu phòng: Giường đơn");
-
-        jLabel51.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel51.setText("Loại phòng: VIP");
-
-        jLabel52.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel52.setText("Tình trạng: Trống");
-
-        jButton13.setBackground(new java.awt.Color(51, 51, 51));
-        jButton13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(255, 255, 255));
-        jButton13.setText("Đặt phòng");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
-        jPanel20.setLayout(jPanel20Layout);
-        jPanel20Layout.setHorizontalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
+        javax.swing.GroupLayout JpnP402Layout = new javax.swing.GroupLayout(JpnP402);
+        JpnP402.setLayout(JpnP402Layout);
+        JpnP402Layout.setHorizontalGroup(
+            JpnP402Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP402Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-                                .addComponent(jLabel49)
+                .addGroup(JpnP402Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP402Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(JpnP402Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP402Layout.createSequentialGroup()
+                                .addComponent(MaPhongP402)
                                 .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-                                .addComponent(jLabel50)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP402Layout.createSequentialGroup()
+                                .addComponent(KieuPhongP402)
                                 .addGap(49, 49, 49)))
-                        .addGroup(jPanel20Layout.createSequentialGroup()
-                            .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel51)
-                                .addComponent(jLabel52))
+                        .addGroup(JpnP402Layout.createSequentialGroup()
+                            .addGroup(JpnP402Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LoaiPhongP402)
+                                .addComponent(TinhTrangP402))
                             .addGap(19, 19, 19)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-                        .addComponent(jButton13)
-                        .addGap(76, 76, 76))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP402Layout.createSequentialGroup()
+                        .addComponent(ButtonP402)
+                        .addGap(72, 72, 72))))
         );
-        jPanel20Layout.setVerticalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
+        JpnP402Layout.setVerticalGroup(
+            JpnP402Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP402Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel49)
+                .addComponent(MaPhongP402)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel50)
+                .addComponent(KieuPhongP402)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel51)
+                .addComponent(LoaiPhongP402)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel52)
-                .addGap(18, 18, 18)
-                .addComponent(jButton13)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(TinhTrangP402)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonP402)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        JpnP403.setBackground(new java.awt.Color(250, 140, 0));
+
+        MaPhongP403.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MaPhongP403.setForeground(new java.awt.Color(255, 255, 255));
+        MaPhongP403.setText("P403");
+
+        KieuPhongP403.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KieuPhongP403.setForeground(new java.awt.Color(255, 255, 255));
+        KieuPhongP403.setText("Kiểu phòng: Giường đơn");
+
+        LoaiPhongP403.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LoaiPhongP403.setForeground(new java.awt.Color(255, 255, 255));
+        LoaiPhongP403.setText("Loại phòng: VIP");
+
+        TinhTrangP403.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TinhTrangP403.setForeground(new java.awt.Color(255, 255, 255));
+        TinhTrangP403.setText("Tình trạng: Trống");
+
+        ButtonP403.setBackground(new java.awt.Color(51, 51, 51));
+        ButtonP403.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonP403.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonP403.setText("Đặt phòng");
+        ButtonP403.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonP403ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JpnP403Layout = new javax.swing.GroupLayout(JpnP403);
+        JpnP403.setLayout(JpnP403Layout);
+        JpnP403Layout.setHorizontalGroup(
+            JpnP403Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP403Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JpnP403Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP403Layout.createSequentialGroup()
+                        .addGroup(JpnP403Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JpnP403Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(MaPhongP403))
+                            .addComponent(LoaiPhongP403)
+                            .addComponent(TinhTrangP403)
+                            .addComponent(KieuPhongP403))
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP403Layout.createSequentialGroup()
+                        .addComponent(ButtonP403)
+                        .addGap(75, 75, 75))))
+        );
+        JpnP403Layout.setVerticalGroup(
+            JpnP403Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnP403Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(MaPhongP403)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(KieuPhongP403)
+                .addGap(12, 12, 12)
+                .addComponent(LoaiPhongP403)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TinhTrangP403)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonP403)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1093,20 +1147,20 @@ public class PhongForm extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP401, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP402, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP403, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP401, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP402, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP403, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1126,34 +1180,98 @@ public class PhongForm extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
+    private void ButtonP101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP101ActionPerformed
 
-        String maPhong=MaPhong.getText();
-        String kieuPhongText=KieuPhong.getText();
+        String maPhong=MaPhongP101.getText();
+        String kieuPhongText=KieuPhongP101.getText();
         String kieuPhong="";
         String[] parts = kieuPhongText.split(":");
         if (parts.length > 1) {
             kieuPhong = parts[1].trim(); 
         }
-        String loaiPhongText=LoaiPhong.getText();
+        String loaiPhongText=LoaiPhongP101.getText();
         String loaiPhong = "";
 
         String[] part = loaiPhongText.split(":");
         if (part.length > 1) {
             loaiPhong = part[1].trim();  
 }
-        if(Button.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(jPanel9,maPhong,TinhTrang,Button,null);
+        if(ButtonP101.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP101,maPhong,TinhTrangP101,ButtonP101,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP101.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP101,TinhTrangP101,ButtonP101);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP101ActionPerformed
+
+    private void ButtonP102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP102ActionPerformed
+               String maPhong=MaPhongP102.getText();
+        String kieuPhongText=KieuPhongP102.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP102.getText();
+        String loaiPhong = "";
+
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP102.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP102,maPhong,TinhTrangP102,ButtonP102,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP102.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP102,TinhTrangP102,ButtonP102);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP102ActionPerformed
+
+    private void ButtonP103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP103ActionPerformed
+        
+        String maPhong=MaPhongP101.getText();
+        String kieuPhongText=KieuPhongP101.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP101.getText();
+        String loaiPhong = "";
+
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP101.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP101,maPhong,TinhTrangP101,ButtonP101,null);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1163,142 +1281,394 @@ public class PhongForm extends javax.swing.JPanel {
         }
         
         else {
-            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,maDatPhong101,maKhachHang,TableDV);
+            
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,maDatPhong101,maKhachHang,TableDV,JpnP101,TinhTrangP101,ButtonP101);
             bill.setLocationRelativeTo(null);
             bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             bill.setVisible(true);
         }
-    }//GEN-LAST:event_ButtonActionPerformed
+    }//GEN-LAST:event_ButtonP103ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void ButtonP201ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP201ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        String maPhong=MaPhongP201.getText();
+        String kieuPhongText=KieuPhongP201.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP201.getText();
+        String loaiPhong = "";
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP201.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP201,maPhong,TinhTrangP201,ButtonP201,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP201.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP201,TinhTrangP201,ButtonP201);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP201ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void ButtonP202ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP202ActionPerformed
+        
+                String maPhong=MaPhongP202.getText();
+        String kieuPhongText=KieuPhongP202.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP202.getText();
+        String loaiPhong = "";
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP202.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP202,maPhong,TinhTrangP202,ButtonP202,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP202.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP202,TinhTrangP202,ButtonP202);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP202ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void ButtonP203ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP203ActionPerformed
+                String maPhong=MaPhongP203.getText();
+        String kieuPhongText=KieuPhongP203.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP203.getText();
+        String loaiPhong = "";
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP203.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP203,maPhong,TinhTrangP203,ButtonP203,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP203.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP203,TinhTrangP203,ButtonP203);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+       
+    }//GEN-LAST:event_ButtonP203ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void ButtonP301ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP301ActionPerformed
+        String maPhong=MaPhongP301.getText();
+        String kieuPhongText=KieuPhongP301.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP301.getText();
+        String loaiPhong = "";
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP301.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP301,maPhong,TinhTrangP301,ButtonP301,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP301.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP301,TinhTrangP301,ButtonP301);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP301ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    private void ButtonP302ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP302ActionPerformed
+        
+                String maPhong=MaPhongP302.getText();
+        String kieuPhongText=KieuPhongP302.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP302.getText();
+        String loaiPhong = "";
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP302.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP302,maPhong,TinhTrangP302,ButtonP302,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP302.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP302,TinhTrangP302,ButtonP302);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP302ActionPerformed
+
+    private void ButtonP303ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP303ActionPerformed
+        
+                String maPhong=MaPhongP303.getText();
+        String kieuPhongText=KieuPhongP303.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP303.getText();
+        String loaiPhong = "";
+
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP303.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP303,maPhong,TinhTrangP303,ButtonP303,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP303.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP303,TinhTrangP303,ButtonP303);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP303ActionPerformed
+
+    private void ButtonP401ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP401ActionPerformed
+        String maPhong=MaPhongP401.getText();
+        String kieuPhongText=KieuPhongP401.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP401.getText();
+        String loaiPhong = "";
+
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP401.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP401,maPhong,TinhTrangP401,ButtonP401,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP401.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP401,TinhTrangP401,ButtonP401);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP401ActionPerformed
+
+    private void ButtonP402ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP402ActionPerformed
+        
+                String maPhong=MaPhongP402.getText();
+        String kieuPhongText=KieuPhongP402.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP402.getText();
+        String loaiPhong = "";
+
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP402.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP402,maPhong,TinhTrangP402,ButtonP402,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP402.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP402,TinhTrangP402,ButtonP402);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP402ActionPerformed
+
+    private void ButtonP403ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP403ActionPerformed
+        
+               String maPhong=MaPhongP403.getText();
+        String kieuPhongText=KieuPhongP403.getText();
+        String kieuPhong="";
+        String[] parts = kieuPhongText.split(":");
+        if (parts.length > 1) {
+            kieuPhong = parts[1].trim(); 
+        }
+        String loaiPhongText=LoaiPhongP403.getText();
+        String loaiPhong = "";
+
+        String[] part = loaiPhongText.split(":");
+        if (part.length > 1) {
+            loaiPhong = part[1].trim();  
+}
+        if(ButtonP403.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP403,maPhong,TinhTrangP403,ButtonP403,null);
+            dh.setLocationRelativeTo(null);
+            dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dh.setVisible(true);
+        }
+        
+        else {
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP403.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP403,TinhTrangP403,ButtonP403);
+            bill.setLocationRelativeTo(null);
+            bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            bill.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonP403ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button;
-    private javax.swing.JLabel KieuPhong;
-    private javax.swing.JLabel LoaiPhong;
-    private javax.swing.JLabel MaPhong;
-    private javax.swing.JLabel TinhTrang;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton ButtonP101;
+    private javax.swing.JButton ButtonP102;
+    private javax.swing.JButton ButtonP103;
+    private javax.swing.JButton ButtonP201;
+    private javax.swing.JButton ButtonP202;
+    private javax.swing.JButton ButtonP203;
+    private javax.swing.JButton ButtonP301;
+    private javax.swing.JButton ButtonP302;
+    private javax.swing.JButton ButtonP303;
+    private javax.swing.JButton ButtonP401;
+    private javax.swing.JButton ButtonP402;
+    private javax.swing.JButton ButtonP403;
+    private javax.swing.JPanel JpnP101;
+    private javax.swing.JPanel JpnP102;
+    private javax.swing.JPanel JpnP103;
+    private javax.swing.JPanel JpnP201;
+    private javax.swing.JPanel JpnP202;
+    private javax.swing.JPanel JpnP203;
+    private javax.swing.JPanel JpnP301;
+    private javax.swing.JPanel JpnP302;
+    private javax.swing.JPanel JpnP303;
+    private javax.swing.JPanel JpnP401;
+    private javax.swing.JPanel JpnP402;
+    private javax.swing.JPanel JpnP403;
+    private javax.swing.JLabel KieuPhongP101;
+    private javax.swing.JLabel KieuPhongP102;
+    private javax.swing.JLabel KieuPhongP103;
+    private javax.swing.JLabel KieuPhongP201;
+    private javax.swing.JLabel KieuPhongP202;
+    private javax.swing.JLabel KieuPhongP203;
+    private javax.swing.JLabel KieuPhongP301;
+    private javax.swing.JLabel KieuPhongP302;
+    private javax.swing.JLabel KieuPhongP303;
+    private javax.swing.JLabel KieuPhongP401;
+    private javax.swing.JLabel KieuPhongP402;
+    private javax.swing.JLabel KieuPhongP403;
+    private javax.swing.JLabel LoaiPhongP101;
+    private javax.swing.JLabel LoaiPhongP102;
+    private javax.swing.JLabel LoaiPhongP103;
+    private javax.swing.JLabel LoaiPhongP201;
+    private javax.swing.JLabel LoaiPhongP202;
+    private javax.swing.JLabel LoaiPhongP203;
+    private javax.swing.JLabel LoaiPhongP301;
+    private javax.swing.JLabel LoaiPhongP302;
+    private javax.swing.JLabel LoaiPhongP303;
+    private javax.swing.JLabel LoaiPhongP401;
+    private javax.swing.JLabel LoaiPhongP402;
+    private javax.swing.JLabel LoaiPhongP403;
+    private javax.swing.JLabel MaPhongP101;
+    private javax.swing.JLabel MaPhongP102;
+    private javax.swing.JLabel MaPhongP103;
+    private javax.swing.JLabel MaPhongP201;
+    private javax.swing.JLabel MaPhongP202;
+    private javax.swing.JLabel MaPhongP203;
+    private javax.swing.JLabel MaPhongP301;
+    private javax.swing.JLabel MaPhongP302;
+    private javax.swing.JLabel MaPhongP303;
+    private javax.swing.JLabel MaPhongP401;
+    private javax.swing.JLabel MaPhongP402;
+    private javax.swing.JLabel MaPhongP403;
+    private javax.swing.JLabel TinhTrangP101;
+    private javax.swing.JLabel TinhTrangP102;
+    private javax.swing.JLabel TinhTrangP103;
+    private javax.swing.JLabel TinhTrangP201;
+    private javax.swing.JLabel TinhTrangP202;
+    private javax.swing.JLabel TinhTrangP203;
+    private javax.swing.JLabel TinhTrangP301;
+    private javax.swing.JLabel TinhTrangP302;
+    private javax.swing.JLabel TinhTrangP303;
+    private javax.swing.JLabel TinhTrangP401;
+    private javax.swing.JLabel TinhTrangP402;
+    private javax.swing.JLabel TinhTrangP403;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }

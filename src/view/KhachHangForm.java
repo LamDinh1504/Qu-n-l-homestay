@@ -4,6 +4,24 @@
  */
 package view;
 
+import components.ClientTable;
+import components.StaffManagerTable;
+import controller.KhachHangController;
+import dao.KhachHangDAO;
+import java.io.File;
+import java.io.FileOutputStream;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 /**
  *
  * @author ASUS
@@ -15,8 +33,20 @@ public class KhachHangForm extends javax.swing.JPanel {
      */
     public KhachHangForm() {
         initComponents();
+        refreshTable();
     }
+    
+    private void refreshTable(){
+        ClientTable newTable = new ClientTable();
+        DefaultTableModel newTableModel = (DefaultTableModel) newTable.getTableModel();
 
+        TableKhachHang.setModel(newTableModel);
+               
+        repaint();
+        revalidate();
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +56,235 @@ public class KhachHangForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        Xoa = new javax.swing.JButton();
+        JtfTimKiem = new javax.swing.JTextField();
+        TimKiem = new javax.swing.JButton();
+        Sua = new javax.swing.JButton();
+        Xuat = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableKhachHang = new javax.swing.JTable();
+
+        Xoa.setText("Xóa");
+        Xoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XoaActionPerformed(evt);
+            }
+        });
+
+        TimKiem.setText("Tìm kiếm");
+        TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TimKiemActionPerformed(evt);
+            }
+        });
+
+        Sua.setText("Sửa");
+        Sua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SuaActionPerformed(evt);
+            }
+        });
+
+        Xuat.setText("Xuất");
+        Xuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XuatActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(Xoa)
+                .addGap(66, 66, 66)
+                .addComponent(Sua)
+                .addGap(74, 74, 74)
+                .addComponent(Xuat)
+                .addGap(68, 68, 68)
+                .addComponent(JtfTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(TimKiem)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Xoa)
+                    .addComponent(JtfTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TimKiem)
+                    .addComponent(Sua)
+                    .addComponent(Xuat))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        TableKhachHang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã khách hàng", "Tên khách hàng", "Số điên thoại", "CMND", "Email", "Địa chỉ ", "Giới tính"
+            }
+        ));
+        jScrollPane1.setViewportView(TableKhachHang);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 985, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimKiemActionPerformed
+        String keyword = JtfTimKiem.getText().trim().toLowerCase();
+
+        DefaultTableModel model = (DefaultTableModel) TableKhachHang.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        TableKhachHang.setRowSorter(sorter);
+
+        if (keyword.isEmpty()) {
+            sorter.setRowFilter(null); // Hiển thị toàn bộ
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1)); // Cột 1: "Tên khách hàng"
+        }
+    }//GEN-LAST:event_TimKiemActionPerformed
+
+    private void XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XoaActionPerformed
+        int selectedRow = TableKhachHang.getSelectedRow();
+
+        if (selectedRow == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng chọn khách hàng để xóa.");
+            return;
+        }
+
+        String maKH = TableKhachHang.getValueAt(selectedRow, 0).toString(); // Cột 0 là Mã khách hàng
+
+        int confirm = javax.swing.JOptionPane.showConfirmDialog(this,
+                "Bạn có chắc muốn xóa khách hàng có mã: " + maKH + "?",
+                "Xác nhận xóa",
+                javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+            KhachHangController khachHangModel=new KhachHangController();
+            int success = khachHangModel.deleteKhachHang(maKH); // Gọi DAO xóa theo mã khách hàng
+
+            if (success > 0) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Xóa khách hàng thành công.");
+                refreshTable(); // Cập nhật lại bảng sau khi xóa
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Xóa thất bại. Vui lòng thử lại.");
+            }
+        }
+    }//GEN-LAST:event_XoaActionPerformed
+
+    private void XuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XuatActionPerformed
+            try {
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.setDialogTitle("Chọn nơi lưu file Excel");
+        jFileChooser.setSelectedFile(new File("DanhSachKhachHang.xlsx"));
+        int userSelection = jFileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File saveFile = jFileChooser.getSelectedFile();
+            if (!saveFile.toString().toLowerCase().endsWith(".xlsx")) {
+                saveFile = new File(saveFile.toString() + ".xlsx");
+            }
+
+            Workbook wb = new XSSFWorkbook();
+            Sheet sheet = wb.createSheet("Danh sách khách hàng");
+
+            // Tạo dòng tiêu đề (header)
+            Row rowCol = sheet.createRow(0);
+            for (int i = 0; i < TableKhachHang.getColumnCount(); i++) {
+                Cell cell = rowCol.createCell(i);
+                cell.setCellValue(TableKhachHang.getColumnName(i));
+            }
+
+            // Ghi dữ liệu khách hàng
+            for (int j = 0; j < TableKhachHang.getRowCount(); j++) {
+                Row row = sheet.createRow(j + 1);
+                for (int k = 0; k < TableKhachHang.getColumnCount(); k++) {
+                    Cell cell = row.createCell(k);
+                    Object value = TableKhachHang.getValueAt(j, k);
+                    if (value != null) {
+                        cell.setCellValue(value.toString());
+                    }
+                }
+            }
+
+            // Ghi workbook ra file
+            try (FileOutputStream out = new FileOutputStream(saveFile)) {
+                wb.write(out);
+            }
+            wb.close();
+
+            // Mở file sau khi lưu
+            openFile(saveFile.toString());
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_XuatActionPerformed
+
+    private void SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuaActionPerformed
+        int selectedRow = TableKhachHang.getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một khách hàng để sửa.");
+            return;
+        }
+
+        String maKH = TableKhachHang.getValueAt(selectedRow, 0).toString(); // Lấy mã khách hàng từ dòng được chọn
+
+        model.KhachHang khachHang = KhachHangDAO.getKhachHang(maKH); // Lấy đối tượng khách hàng từ DB
+        String maKhachHang = khachHang.getMaKhachHang();
+
+        if (khachHang != null) {
+            UpdateKhachHang updateForm = new UpdateKhachHang(maKhachHang); // Truyền mã khách hàng vào form cập nhật
+            updateForm.setLocationRelativeTo(null);
+            updateForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            updateForm.setVisible(true);
+
+            updateForm.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    refreshTable(); // Làm mới bảng khi form đóng
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin khách hàng.");
+        }
+    }//GEN-LAST:event_SuaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JtfTimKiem;
+    private javax.swing.JButton Sua;
+    private javax.swing.JTable TableKhachHang;
+    private javax.swing.JButton TimKiem;
+    private javax.swing.JButton Xoa;
+    private javax.swing.JButton Xuat;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private void openFile(String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

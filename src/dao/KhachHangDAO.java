@@ -68,6 +68,8 @@ public class KhachHangDAO {
 
     // Xóa một khách hàng theo mã
     public static int deleteKhachHang(String maKhachHang) {
+        
+        
         int i = 0;
         try (Connection con = ConnectionUtils.getMyConnection()) {
             String query = "DELETE FROM KHACHHANG WHERE MAKH = ?";

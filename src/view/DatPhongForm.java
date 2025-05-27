@@ -665,6 +665,7 @@ public class DatPhongForm extends javax.swing.JFrame { // Thay đổi từ JFram
         return String.format("KH%02d", maMoi); 
     }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
         String maKhachHang=this.maKhachHang;
         String hoTen = HoTen.getText().trim();
         String soDienThoai = SoDienThoai.getText().trim();
@@ -688,6 +689,7 @@ public class DatPhongForm extends javax.swing.JFrame { // Thay đổi từ JFram
         CTDichVuController ctdichvuController=new CTDichVuController();
         HoaDonController hoaDonController=new HoaDonController();
         
+        System.out.println(phongController.soNgayO(maDatPhong));
         boolean result1 = phongController.addKhachHangIntoModel(maKhachHang,hoTen,soDienThoai,cmnd,email,diaChi,gioiTinh);
         boolean result2 = phongController.addDatPhongIntoModel(maDatPhong,maKhachHang,maPhong,ngayBatDau,ngayTra,trangThai);
         

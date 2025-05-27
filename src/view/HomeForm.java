@@ -244,7 +244,7 @@ public class HomeForm extends javax.swing.JFrame {
         JlbKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JlbKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         JlbKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/animal_16434247.png"))); // NOI18N
-        JlbKhachHang.setText("Hóa đơn");
+        JlbKhachHang.setText("Khách hàng");
 
         javax.swing.GroupLayout KhachHangLayout = new javax.swing.GroupLayout(KhachHang);
         KhachHang.setLayout(KhachHangLayout);
@@ -253,7 +253,7 @@ public class HomeForm extends javax.swing.JFrame {
             .addGroup(KhachHangLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(JlbKhachHang)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         KhachHangLayout.setVerticalGroup(
             KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

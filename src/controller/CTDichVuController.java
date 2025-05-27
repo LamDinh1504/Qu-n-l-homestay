@@ -7,6 +7,8 @@ package controller;
 import dao.CTDichVuDAO;
 import dao.DichVuDAO;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import model.CTDichVu;
 import model.DichVu;
 
@@ -49,12 +51,12 @@ public class CTDichVuController {
             }
         }
     }
-    public int deleteCTDichVu(String maDatPhong,String maDichVu) {
+    public int deleteCTDichVu(String maDatPhong) {
         if (maDatPhong == null || maDatPhong.trim().isEmpty()) {
             return -1;
         }
     try {
-            return CTdichvuModel.deleteCTDichVu(maDatPhong,maDichVu);
+            return CTdichvuModel.deleteCTDichVu(maDatPhong);
          } catch (Exception e) {
             return -1;
         }
@@ -75,13 +77,40 @@ public class CTDichVuController {
             }
         }
     }
-    public int tongTienDichVu(ArrayList<CTDichVu> ctDichVu,ArrayList<DichVu> dv,String maDatPhong) {
-        int sum=0;
-        for(CTDichVu ctdv :ctDichVu) {
-            if(ctdv.getMaDatPhong()==maDatPhong) {
-                sum+=ctdv.calculator(dv);
-            }
+    public int tongTienDichVu(ArrayList<DichVu> dsDichVu, String maDatPhong) {
+        int tong = 0;
+        ArrayList<CTDichVu> dsCTDichVu = CTdichvuModel.getAllDichVu(maDatPhong); // Lấy danh sách CTDV từ DB
+
+        for (CTDichVu ctdv : dsCTDichVu) {
+            tong += ctdv.calculator(dsDichVu); // Tính tiền từng dịch vụ
         }
-        return sum;
+
+        return tong;
+    }
+    
+    public JTable createCTDichVuTable(String maDatPhong) {
+        String[] columnNames = {"Tên dịch vụ", "Đơn giá", "Số lượng"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+        ArrayList<CTDichVu> dsCTDichVu = CTdichvuModel.getAllDichVu(maDatPhong);
+        ArrayList<DichVu> dsDichVu = dichvuModel.getAllDichVu();
+
+        for (CTDichVu ct : dsCTDichVu) {
+            String tenDichVu = "";
+            int donGia = 0;
+
+            for (DichVu dv : dsDichVu) {
+                if (dv.getMaDichVu().equals(ct.getMaDichVu())) {
+                    tenDichVu = dv.getTenDichVu();
+                    donGia = dv.getDonGia();
+                    break;
+                }
+            }
+
+            Object[] rowData = {tenDichVu, donGia, ct.getSoLuong()};
+            model.addRow(rowData);
+        }
+
+        return new JTable(model);
     }
 }

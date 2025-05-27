@@ -5,18 +5,25 @@
 package view;
 
 import controller.CTDichVuController;
+import controller.DichVuController;
 import controller.PhongController;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.CTDichVu;
@@ -39,13 +46,25 @@ public class BillForm extends javax.swing.JFrame {
     private String MaDatPhong;
     private String maKhachHang;
     private JTable TableDV;
-    public BillForm(String maPhong,String loaiPhong,String kieuPhong,String maDatPhong,String maKhachHang,JTable TableDV) {
+    private int tongTienPhong;
+    private PhongController phongModel;
+    private CTDichVuController CTdichVuModel;
+    private JPanel panel;
+    private JLabel TinhTrang;
+    private JButton Button;
+    public BillForm(String maPhong,String loaiPhong,String kieuPhong,String maDatPhong,String maKhachHang,JTable TableDV,JPanel panel,JLabel tinhTrang, JButton button) {
+        this.panel = panel;
+        this.TinhTrang = tinhTrang;
+        this.Button = button;
         this.MaPhong=maPhong;
         this.KieuPhong=kieuPhong;
         this.LoaiPhong=loaiPhong;
         this.MaDatPhong=maDatPhong;
         this.maKhachHang=maKhachHang;
         this.TableDV=TableDV;
+        this.tongTienPhong=tongTienPhong;
+        this.phongModel=new PhongController();
+        this.CTdichVuModel=new CTDichVuController();
         initComponents();
         
         JlbMaPhong.setText("Mã phòng: " + maPhong);
@@ -67,31 +86,32 @@ public class BillForm extends javax.swing.JFrame {
 
         // Duyệt qua từng dòng của bảng gốc, bỏ cột 0
         for (int i = 0; i < originalModel.getRowCount(); i++) {
-            Object tenDV = originalModel.getValueAt(i, 1); // Tên dịch vụ
-            Object donGia = originalModel.getValueAt(i, 2); // Đơn giá
-            Object soLuong = originalModel.getValueAt(i, 3); // Số lượng
+            Object tenDV = originalModel.getValueAt(i, 0); // Tên dịch vụ
+            Object donGia = originalModel.getValueAt(i, 1); // Đơn giá
+            Object soLuong = originalModel.getValueAt(i, 2); // Số lượng
 
             newModel.addRow(new Object[] { tenDV, donGia, soLuong });
         }
 
         // Gán model mới cho TableDV
         TableDichVu.setModel(newModel);
-        int tongTien = 0;
-        for (int i = 0; i < TableDichVu.getRowCount(); i++) {
-            Object donGiaObj = TableDichVu.getValueAt(i, 1);
-            Object soLuongObj = TableDichVu.getValueAt(i, 2);
-
-            if (donGiaObj != null && soLuongObj != null) {
-                try {
-                    int donGia = Integer.parseInt(donGiaObj.toString());
-                    int soLuong = Integer.parseInt(soLuongObj.toString());
-                    tongTien += donGia * soLuong;
-                } catch (NumberFormatException e) {
-                    // Có thể log lỗi hoặc bỏ qua dòng nếu dữ liệu không hợp lệ
-                    System.err.println("Dữ liệu không hợp lệ ở dòng " + i);
-                }
-            }
-        }
+//        int tongTien = 0;
+//        for (int i = 0; i < TableDichVu.getRowCount(); i++) {
+//            Object donGiaObj = TableDichVu.getValueAt(i, 1);
+//            Object soLuongObj = TableDichVu.getValueAt(i, 2);
+//
+//            if (donGiaObj != null && soLuongObj != null) {
+//                try {
+//                    int donGia = Integer.parseInt(donGiaObj.toString());
+//                    int soLuong = Integer.parseInt(soLuongObj.toString());
+//                    tongTien += donGia * soLuong;
+//                } catch (NumberFormatException e) {
+//                    System.err.println("Dữ liệu không hợp lệ ở dòng " + i);
+//                }
+//            }
+//        }
+        ArrayList<DichVu> dv=CTdichVuModel.getAllDichVu();
+        int tongTien=CTdichVuModel.tongTienDichVu(dv, maDatPhong);
         JlbTienDichVu.setText("Tiền dịch vụ: " + tongTien + " đồng");
         
         LocalDate today = LocalDate.now();
@@ -99,19 +119,14 @@ public class BillForm extends javax.swing.JFrame {
         JlbNgayLapHoaDon.setText("Ngày lập hóa đơn: " + today.format(formatter));
         JlbPhuThu.setText("Phụ thu: 0");
         
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        String ngayDenStr = datPhong.getNgayBatDau().split(" ")[0];
-        String ngayTraStr = datPhong.getNgayTra().split(" ")[0];
-
-// Parse theo định dạng yyyy-MM-dd vì chuỗi đang có dạng đó
-        LocalDate ngayDen = LocalDate.parse(ngayDenStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        LocalDate ngayTra = LocalDate.parse(ngayTraStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-        long soNgayO = ChronoUnit.DAYS.between(ngayDen, ngayTra);
-
-// Hiển thị ra label hoặc text field
+        int soNgayO=phongModel.soNgayO(maDatPhong);
         JlbSoNgaytO.setText(soNgayO + " ngày");
+        
+        int sum=phongModel.tongTienPhong(datPhong);
+        Tong.setText("Tổng: " + sum + " đồng");
+
+        this.tongTienPhong=sum+tongTien;
+        TongTien.setText(this.tongTienPhong + " đồng");
     }
 
     /**
@@ -148,7 +163,7 @@ public class BillForm extends javax.swing.JFrame {
         JlbKieuPhong = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        TongTien = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         HinhThucThanhToan = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
@@ -329,6 +344,13 @@ public class BillForm extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(65, 65, 65))
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(JlbMaHoaDon)
+                        .addGap(99, 99, 99)
+                        .addComponent(JlbLoaiPhong)
+                        .addGap(82, 82, 82)
+                        .addComponent(JlbKieuPhong)
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JlbNgayLapHoaDon)
                             .addComponent(JlbPhuThu)
@@ -340,14 +362,7 @@ public class BillForm extends javax.swing.JFrame {
                                 .addGap(42, 42, 42))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(Tong)
-                                .addGap(179, 179, 179))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(JlbMaHoaDon)
-                        .addGap(99, 99, 99)
-                        .addComponent(JlbLoaiPhong)
-                        .addGap(82, 82, 82)
-                        .addComponent(JlbKieuPhong)
-                        .addContainerGap())))
+                                .addGap(135, 135, 135))))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,7 +394,7 @@ public class BillForm extends javax.swing.JFrame {
                         .addComponent(JlbPhuThu))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Tong)
                     .addComponent(JlbNgayLapHoaDon))
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -393,9 +408,9 @@ public class BillForm extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Tổng tiền: ");
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 143, 143));
-        jLabel16.setText("jLabel16");
+        TongTien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TongTien.setForeground(new java.awt.Color(0, 143, 143));
+        TongTien.setText("jLabel16");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -471,6 +486,13 @@ public class BillForm extends javax.swing.JFrame {
         JtfKhachDua.setBackground(new java.awt.Color(51, 51, 51));
         JtfKhachDua.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JtfKhachDua.setForeground(new java.awt.Color(255, 255, 255));
+        JtfKhachDua.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        JtfKhachDua.setFocusCycleRoot(true);
+        JtfKhachDua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JtfKhachDuaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -502,7 +524,7 @@ public class BillForm extends javax.swing.JFrame {
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel15)
                                                 .addGap(132, 132, 132)
-                                                .addComponent(jLabel16))
+                                                .addComponent(TongTien))
                                             .addComponent(HinhThucThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(68, 68, 68)
@@ -535,7 +557,7 @@ public class BillForm extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
-                            .addComponent(jLabel16))
+                            .addComponent(TongTien))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -608,8 +630,13 @@ public class BillForm extends javax.swing.JFrame {
         }
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          JOptionPane.showMessageDialog(this, "Thanh toán thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-          dispose();
+        String trangThai="Trống";
+        phongModel.updateDatPhongModel(MaDatPhong, trangThai);
+        panel.setBackground(new Color(250, 140, 0));
+        TinhTrang.setText("Tình trạng: Trống");
+        Button.setText("Đặt phòng");
+        JOptionPane.showMessageDialog(this, "Thanh toán thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BtnTaoMaQRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTaoMaQRActionPerformed
@@ -624,10 +651,26 @@ public class BillForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-   
+    private void JtfKhachDuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtfKhachDuaActionPerformed
+        try {
+        // Giả sử bạn lấy tổng tiền từ jLabel16 (dạng String, ví dụ: "500000")
+        int tongTien = this.tongTienPhong;
+        
+        // Lấy số tiền khách đưa từ ô nhập
+        int khachDua = Integer.parseInt(JtfKhachDua.getText().trim());
+
+        // Tính tiền trả lại
+        int tienTraLai = -(khachDua - tongTien);
+
+        // Hiển thị kết quả (giả sử txtTienTraLai là ô hiển thị tiền trả lại)
+        JtfTienTraLai.setText(String.valueOf(tienTraLai));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Vui lòng nhập số hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        JtfTienTraLai.setText("");
+    }
+    }//GEN-LAST:event_JtfKhachDuaActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnTaoMaQR;
@@ -651,12 +694,12 @@ public class BillForm extends javax.swing.JFrame {
     private javax.swing.JTextField NgayTraPhong;
     private javax.swing.JTable TableDichVu;
     private javax.swing.JLabel Tong;
+    private javax.swing.JLabel TongTien;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

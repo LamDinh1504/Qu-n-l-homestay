@@ -87,10 +87,10 @@ public class DatPhong {
             LocalDate date1 = LocalDate.parse(ngayBatDau, formatter);
             LocalDate date2 = LocalDate.parse(ngayTra, formatter);
 
-            // Tính số ngày giữa 2 ngày
-            int daysBetween = (int) ChronoUnit.DAYS.between(date2, date1);
-            return daysBetween;
+        if (date1.isAfter(date2)) {
+            return 0; // hoặc throw new IllegalArgumentException("Ngày bắt đầu lớn hơn ngày trả");
+        }
+
+    return (int) ChronoUnit.DAYS.between(date1, date2);
     }
-    
-    
 }

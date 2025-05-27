@@ -8,9 +8,19 @@ import components.ServiceTable;
 import components.StaffManagerTable;
 import dao.DichVuDAO;
 import dao.NhanVienDAO;
+import java.io.File;
+import java.io.FileOutputStream;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -49,8 +59,7 @@ public class DichVuForm extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        JtfTimKiem = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableDichVu = new javax.swing.JTable();
@@ -77,10 +86,18 @@ public class DichVuForm extends javax.swing.JPanel {
         });
 
         jButton4.setText("Xuất");
-
-        jButton5.setText("Chi tiết");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Tìm kiếm");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         TableDichVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,13 +122,11 @@ public class DichVuForm extends javax.swing.JPanel {
                 .addComponent(jButton3)
                 .addGap(56, 56, 56)
                 .addComponent(jButton4)
-                .addGap(62, 62, 62)
-                .addComponent(jButton5)
-                .addGap(51, 51, 51)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(131, 131, 131)
+                .addComponent(JtfTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
                 .addComponent(jButton6)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
@@ -123,8 +138,7 @@ public class DichVuForm extends javax.swing.JPanel {
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JtfTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,17 +229,82 @@ public class DichVuForm extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       try {
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.setDialogTitle("Chọn nơi lưu file Excel");
+        jFileChooser.setSelectedFile(new File("DanhSachDichVu.xlsx"));
+        int userSelection = jFileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File saveFile = jFileChooser.getSelectedFile();
+            if (!saveFile.toString().toLowerCase().endsWith(".xlsx")) {
+                saveFile = new File(saveFile.toString() + ".xlsx");
+            }
+
+            Workbook wb = new XSSFWorkbook();
+            Sheet sheet = wb.createSheet("Danh sách dịch vụ");
+
+            // Tạo dòng tiêu đề (header)
+            Row rowCol = sheet.createRow(0);
+            for (int i = 0; i < TableDichVu.getColumnCount(); i++) {
+                Cell cell = rowCol.createCell(i);
+                cell.setCellValue(TableDichVu.getColumnName(i));
+            }
+
+            // Ghi dữ liệu dịch vụ
+            for (int j = 0; j < TableDichVu.getRowCount(); j++) {
+                Row row = sheet.createRow(j + 1);
+                for (int k = 0; k < TableDichVu.getColumnCount(); k++) {
+                    Cell cell = row.createCell(k);
+                    Object value = TableDichVu.getValueAt(j, k);
+                    if (value != null) {
+                        cell.setCellValue(value.toString());
+                    }
+                }
+            }
+
+            // Ghi workbook ra file
+            try (FileOutputStream out = new FileOutputStream(saveFile)) {
+                wb.write(out);
+            }
+            wb.close();
+
+            // Mở file sau khi lưu
+            openFile(saveFile.toString());
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        String keyword = JtfTimKiem.getText().trim().toLowerCase();
+
+        DefaultTableModel model = (DefaultTableModel) TableDichVu.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        TableDichVu.setRowSorter(sorter);
+
+        if (keyword.isEmpty()) {
+            sorter.setRowFilter(null); // Hiển thị toàn bộ
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1)); // Cột 1: "Tên dịch vụ"
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JtfTimKiem;
     private javax.swing.JTable TableDichVu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    private void openFile(String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

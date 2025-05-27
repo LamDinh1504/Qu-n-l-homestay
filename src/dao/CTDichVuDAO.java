@@ -61,13 +61,12 @@ public class CTDichVuDAO {
         }
         return i;
     }
-    public static int deleteCTDichVu(String maDatPhong,String maDichVu){
+    public static int deleteCTDichVu(String maDatPhong){
         int i=0;
         try(Connection con=ConnectionUtils.getMyConnection()) {
-            String query="DELETE FROM DICHVU WHERE MADP= ? AND MADV= ?";
+            String query="DELETE FROM CTDV WHERE MADP= ?";
             PreparedStatement ps=con.prepareStatement(query);
             ps.setString(1,maDatPhong.trim());
-            ps.setString(2,maDichVu.trim());
             i=ps.executeUpdate();
         }
         catch(Exception e) {
@@ -76,7 +75,7 @@ public class CTDichVuDAO {
         return i;
     }
     public void updateCTDichVu(String maDatPhong,String maDichVu, int soLuong){
-        String query = "UPDATE DICHVU SET MADP=?,MADV=?,SOLUONG=?,";
+        String query = "UPDATE CTDV SET MADP=?,MADV=?,SOLUONG=?,";
         try(Connection conn = ConnectionUtils.getMyConnection()) {
             PreparedStatement ps=conn.prepareStatement(query);
             ps.setString(1,maDatPhong);

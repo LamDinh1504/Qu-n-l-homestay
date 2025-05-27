@@ -50,7 +50,7 @@ public class CTDichVu {
     
     public int calculator(ArrayList<DichVu> dv) {
         for(DichVu x : dv) {
-            if(this.maDichVu==x.getMaDichVu()) {
+            if(this.maDichVu.equals(x.getMaDichVu())) {
                 return this.soLuong*x.donGia;
             }
         }
