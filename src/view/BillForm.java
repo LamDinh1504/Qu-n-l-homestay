@@ -639,7 +639,6 @@ public class BillForm extends javax.swing.JFrame {
 
         LocalDate date = LocalDate.parse(ngayLap, oldFormatter);
         ngayLap = date.format(newFormatter);
-        System.out.println(maHoaDon + " " +MaDatPhong + " " +ngayLap + " "+ tongTien);
         boolean result =hoaDonController.addHoaDonIntoModel(maHoaDon,MaDatPhong ,ngayLap ,tongTien);
         String trangThai="Trống";
         phongModel.updateDatPhongModel(MaDatPhong, trangThai);
