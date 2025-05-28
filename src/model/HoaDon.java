@@ -11,17 +11,15 @@ package model;
 public class HoaDon {
     private String maHoaDon;
     private String maDatPhong;
-    private String maNhanVien;
     private String ngayLap;
     private int thanhTien;
 
     public HoaDon() {
     }
 
-    public HoaDon(String maHoaDon, String maDatPhong, String maNhanVien, String ngayLap, int thanhTien) {
+    public HoaDon(String maHoaDon, String maDatPhong, String ngayLap, int thanhTien) {
         this.maHoaDon = maHoaDon;
         this.maDatPhong = maDatPhong;
-        this.maNhanVien = maNhanVien;
         this.ngayLap = ngayLap;
         this.thanhTien = thanhTien;
     }
@@ -32,10 +30,6 @@ public class HoaDon {
 
     public String getMaDatPhong() {
         return maDatPhong;
-    }
-
-    public String getMaNhanVien() {
-        return maNhanVien;
     }
 
     public String getNgayLap() {
@@ -54,10 +48,6 @@ public class HoaDon {
         this.maDatPhong = maDatPhong;
     }
 
-    public void setMaNhanVien(String maNhanVien) {
-        this.maNhanVien = maNhanVien;
-    }
-
     public void setNgayLap(String ngayLap) {
         this.ngayLap = ngayLap;
     }
@@ -65,6 +55,5 @@ public class HoaDon {
     public void setThanhTien(int thanhTien) {
         this.thanhTien = thanhTien;
     }
-    
-    
+
 }

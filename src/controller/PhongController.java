@@ -169,7 +169,7 @@ public class PhongController {
     public DatPhong getPhongDangSuDung(String maPhong) {
         ArrayList<DatPhong> dp=datPhongModel.getAllDatPhong();
         for(DatPhong x : dp) {
-            if(x.getMaPhong().equals(maPhong)&&x.getTrangThai().equals("Đang sử dụng")) {
+            if((x.getMaPhong().equals(maPhong))&&(x.getTrangThai().equals("Đang sử dụng"))) {
                 return x;
             }
         }

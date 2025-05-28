@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +32,6 @@ public class HoaDonDAO {
                 HoaDon currentHoaDon = new HoaDon(
                     rs.getString("MAHD"),
                     rs.getString("MADP"),
-                    rs.getString("MANHANVIEN"),
                     rs.getString("NGAYLAP"),
                     rs.getInt("THANHTIEN")
                 );
@@ -46,21 +47,24 @@ public class HoaDonDAO {
     }
     
     
-    public int addHoaDon(String maHoaDon,String maDatPhong,String maNhanVien,String ngayLap,int thanhTien) {
-       int i=0;
-        try(Connection con = ConnectionUtils.getMyConnection()) {
-        
-            String query="INSERT INTO HOADON VALUES(?,?,?,?,?)";
-            PreparedStatement ps=con.prepareStatement(query);
-            ps.setString(1,maHoaDon);
-            ps.setString(2,maDatPhong);
-            ps.setString(3,maNhanVien);
-            ps.setString(4,ngayLap);
-            ps.setInt(5,thanhTien);
-            i=ps.executeUpdate();
-        }
-        catch(Exception e) {
-            System.out.print(e);
+    public int addHoaDon(String maHoaDon,String maDatPhong,String ngayLap,int thanhTien) {
+            int i = 0;
+        try (Connection con = ConnectionUtils.getMyConnection()) {
+            String query = "INSERT INTO HOADON VALUES(?,?,?,?)";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, maHoaDon);
+            ps.setString(2, maDatPhong);
+
+            // Chuyển String "dd-MM-yyyy" sang java.sql.Date
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate localDate = LocalDate.parse(ngayLap, formatter);
+            java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
+
+            ps.setDate(3, sqlDate);  // <-- đúng kiểu dữ liệu DATE
+            ps.setInt(4, thanhTien);
+            i = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace(); // In lỗi chi tiết ra console
         }
         return i;
     }
@@ -77,19 +81,31 @@ public class HoaDonDAO {
         }
         return i;
     }
-    public void updateHoaDon(String maHoaDon,String maDatPhong, String maNhanVien, String ngayLap, int soLuong){
-        String query = "UPDATE HOADON SET MAHD=?,MADP=?,MANHANVIEN=?, NGAYLAP=?, SOLUONG=? Where MAHD=?";
+    public void updateHoaDon(String maHoaDon,String maDatPhong,String ngayLap, int thanhTien){
+        String query = "UPDATE HOADON SET MAHD=?,MADP=?, NGAYLAP=?, THANHTIEN=? Where MAHD=?";
         try(Connection conn = ConnectionUtils.getMyConnection()) {
             PreparedStatement ps=conn.prepareStatement(query);
             ps.setString(1,maHoaDon);
             ps.setString(2, maDatPhong);
-            ps.setString(3,maNhanVien);
-            ps.setString(4, ngayLap);
-            ps.setInt(5, soLuong);
-
+            ps.setString(3, ngayLap);
+            ps.setInt(4, thanhTien);
             ps.executeUpdate();
         }catch(Exception e){
             System.out.print(e);
         }
+    }
+    public static int demSoHoaDon() {
+        String sql = "SELECT COUNT(*) FROM HOADON";
+        try (Connection conn =ConnectionUtils.getMyConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) {
+                return rs.getInt(1); // số lượng KH hiện có
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

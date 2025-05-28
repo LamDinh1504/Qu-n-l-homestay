@@ -8,6 +8,7 @@ import controller.CTDichVuController;
 import controller.PhongController;
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import model.DatPhong;
 
@@ -1205,8 +1206,10 @@ public class PhongForm extends javax.swing.JPanel {
         if (part.length > 1) {
             loaiPhong = part[1].trim();  
 }
+        
+
         if(ButtonP101.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP101,maPhong,TinhTrangP101,ButtonP101,null);
+            DatPhongForm dh=new DatPhongForm(JpnP101,maPhong,TinhTrangP101,ButtonP101,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1214,6 +1217,7 @@ public class PhongForm extends javax.swing.JPanel {
         
         else {
             DatPhong x=phong.getPhongDangSuDung(MaPhongP101.getText());
+            System.out.println(x.getTrangThai());
             this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
             BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP101,TinhTrangP101,ButtonP101);
             bill.setLocationRelativeTo(null);
@@ -1238,7 +1242,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP102.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP102,maPhong,TinhTrangP102,ButtonP102,null);
+            DatPhongForm dh=new DatPhongForm(JpnP102,maPhong,TinhTrangP102,ButtonP102,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1256,33 +1260,31 @@ public class PhongForm extends javax.swing.JPanel {
 
     private void ButtonP103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonP103ActionPerformed
         
-        String maPhong=MaPhongP101.getText();
-        String kieuPhongText=KieuPhongP101.getText();
+        String maPhong=MaPhongP103.getText();
+        String kieuPhongText=KieuPhongP103.getText();
         String kieuPhong="";
         String[] parts = kieuPhongText.split(":");
         if (parts.length > 1) {
             kieuPhong = parts[1].trim(); 
         }
-        String loaiPhongText=LoaiPhongP101.getText();
+        String loaiPhongText=LoaiPhongP103.getText();
         String loaiPhong = "";
 
         String[] part = loaiPhongText.split(":");
         if (part.length > 1) {
             loaiPhong = part[1].trim();  
 }
-        if(ButtonP101.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP101,maPhong,TinhTrangP101,ButtonP101,null);
+        if(ButtonP103.getText()=="Đặt phòng") {       
+            DatPhongForm dh=new DatPhongForm(JpnP103,maPhong,TinhTrangP103,ButtonP103,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
-            this.maDatPhong101=dh.getMaDatPhong();
-            this.maKhachHang=dh.getMaKhachHang();
-            this.TableDV=dh.getTableDV();
         }
         
         else {
-            
-            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,maDatPhong101,maKhachHang,TableDV,JpnP101,TinhTrangP101,ButtonP101);
+            DatPhong x=phong.getPhongDangSuDung(MaPhongP103.getText());
+            this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
+            BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP103,TinhTrangP103,ButtonP103);
             bill.setLocationRelativeTo(null);
             bill.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             bill.setVisible(true);
@@ -1306,7 +1308,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP201.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP201,maPhong,TinhTrangP201,ButtonP201,null);
+            DatPhongForm dh=new DatPhongForm(JpnP201,maPhong,TinhTrangP201,ButtonP201,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1339,7 +1341,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP202.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP202,maPhong,TinhTrangP202,ButtonP202,null);
+            DatPhongForm dh=new DatPhongForm(JpnP202,maPhong,TinhTrangP202,ButtonP202,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1371,7 +1373,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP203.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP203,maPhong,TinhTrangP203,ButtonP203,null);
+            DatPhongForm dh=new DatPhongForm(JpnP203,maPhong,TinhTrangP203,ButtonP203,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1404,7 +1406,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP301.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP301,maPhong,TinhTrangP301,ButtonP301,null);
+            DatPhongForm dh=new DatPhongForm(JpnP301,maPhong,TinhTrangP301,ButtonP301,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1437,7 +1439,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP302.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP302,maPhong,TinhTrangP302,ButtonP302,null);
+            DatPhongForm dh=new DatPhongForm(JpnP302,maPhong,TinhTrangP302,ButtonP302,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1470,7 +1472,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP303.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP303,maPhong,TinhTrangP303,ButtonP303,null);
+            DatPhongForm dh=new DatPhongForm(JpnP303,maPhong,TinhTrangP303,ButtonP303,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1502,7 +1504,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP401.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP401,maPhong,TinhTrangP401,ButtonP401,null);
+            DatPhongForm dh=new DatPhongForm(JpnP401,maPhong,TinhTrangP401,ButtonP401,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1535,7 +1537,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP402.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP402,maPhong,TinhTrangP402,ButtonP402,null);
+            DatPhongForm dh=new DatPhongForm(JpnP402,maPhong,TinhTrangP402,ButtonP402,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);
@@ -1568,7 +1570,7 @@ public class PhongForm extends javax.swing.JPanel {
             loaiPhong = part[1].trim();  
 }
         if(ButtonP403.getText()=="Đặt phòng") {       
-            DatPhongForm dh=new DatPhongForm(JpnP403,maPhong,TinhTrangP403,ButtonP403,null);
+            DatPhongForm dh=new DatPhongForm(JpnP403,maPhong,TinhTrangP403,ButtonP403,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
             dh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             dh.setVisible(true);

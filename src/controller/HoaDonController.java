@@ -17,8 +17,8 @@ public class HoaDonController {
     public HoaDonController(){
         HoaDonModel = new HoaDonDAO();
     }
-     public boolean addHoaDonIntoModel(String maHoaDon,String maDatPhong,String maNhanVien, String ngayLap,int soLuong){
-        if(maDatPhong.trim().isEmpty() || maDatPhong.trim().isEmpty() || maNhanVien.trim().isEmpty() || ngayLap.trim().isEmpty()){
+     public boolean addHoaDonIntoModel(String maHoaDon,String maDatPhong, String ngayLap,int thanhTien){
+        if(maHoaDon.trim().isEmpty() || maDatPhong.trim().isEmpty() || ngayLap.trim().isEmpty()){
             return false;
         }
         else{            
@@ -27,7 +27,7 @@ public class HoaDonController {
             
             try{
                 //Khi sử dụng truy xuất SQL thì nên sử dụng trong Try Catch.
-                HoaDonModel.addHoaDon(maDatPhong,maDatPhong,maNhanVien,ngayLap,soLuong);
+                HoaDonModel.addHoaDon(maHoaDon,maDatPhong,ngayLap,thanhTien);
                 return true;
             }
             catch(Exception e){
@@ -47,14 +47,14 @@ public class HoaDonController {
         }
     }
     
-    public boolean updateHoaDonModel(String maHoaDon,String maDatPhong,String maNhanVien,String ngayLap,int soLuong){
+    public boolean updateHoaDonModel(String maHoaDon,String maDatPhong,String ngayLap,int thanhTien){
         if(maHoaDon.trim().isEmpty()){
             return false;
         }
         else{
             try{
                 //Khi sử dụng truy xuất SQL thì nên sử dụng trong Try Catch.
-                HoaDonModel.updateHoaDon(maHoaDon,maDatPhong,maNhanVien,ngayLap,soLuong);
+                HoaDonModel.updateHoaDon(maHoaDon,maDatPhong,ngayLap,thanhTien);
                 return true;
             }
             catch(Exception e){

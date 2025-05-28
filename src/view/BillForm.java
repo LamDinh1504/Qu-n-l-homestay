@@ -6,7 +6,10 @@ package view;
 
 import controller.CTDichVuController;
 import controller.DichVuController;
+import controller.HoaDonController;
 import controller.PhongController;
+import dao.HoaDonDAO;
+import dao.KhachHangDAO;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Panel;
@@ -52,6 +55,9 @@ public class BillForm extends javax.swing.JFrame {
     private JPanel panel;
     private JLabel TinhTrang;
     private JButton Button;
+    private String ngayLap;
+    private int tongTien;
+    private String maHoaDon;
     public BillForm(String maPhong,String loaiPhong,String kieuPhong,String maDatPhong,String maKhachHang,JTable TableDV,JPanel panel,JLabel tinhTrang, JButton button) {
         this.panel = panel;
         this.TinhTrang = tinhTrang;
@@ -71,8 +77,10 @@ public class BillForm extends javax.swing.JFrame {
         JlbKieuPhong.setText("Kiểu phòng: " +kieuPhong);
         JlbLoaiPhong.setText("Loại phòng: " +loaiPhong);
         JlbMaDatPhong.setText("Mã đặt phòng: " + maDatPhong);
+        this.maHoaDon=taoMaMoi();
+        JlbMaHoaDon.setText("Mã hóa đơn: " + this.maHoaDon);
         PhongController phong=new PhongController();
-        DatPhong datPhong=phong.getDatPhong(maDatPhong);
+        DatPhong datPhong=phong.getDatPhong(maKhachHang);
         KhachHang.setText(datPhong.getMaKhachHang());
         NgayDen.setText(datPhong.getNgayBatDau());
         NgayTraPhong.setText(datPhong.getNgayTra());
@@ -95,27 +103,14 @@ public class BillForm extends javax.swing.JFrame {
 
         // Gán model mới cho TableDV
         TableDichVu.setModel(newModel);
-//        int tongTien = 0;
-//        for (int i = 0; i < TableDichVu.getRowCount(); i++) {
-//            Object donGiaObj = TableDichVu.getValueAt(i, 1);
-//            Object soLuongObj = TableDichVu.getValueAt(i, 2);
-//
-//            if (donGiaObj != null && soLuongObj != null) {
-//                try {
-//                    int donGia = Integer.parseInt(donGiaObj.toString());
-//                    int soLuong = Integer.parseInt(soLuongObj.toString());
-//                    tongTien += donGia * soLuong;
-//                } catch (NumberFormatException e) {
-//                    System.err.println("Dữ liệu không hợp lệ ở dòng " + i);
-//                }
-//            }
-//        }
         ArrayList<DichVu> dv=CTdichVuModel.getAllDichVu();
         int tongTien=CTdichVuModel.tongTienDichVu(dv, maDatPhong);
         JlbTienDichVu.setText("Tiền dịch vụ: " + tongTien + " đồng");
         
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.ngayLap = today.format(formatter);
+
         JlbNgayLapHoaDon.setText("Ngày lập hóa đơn: " + today.format(formatter));
         JlbPhuThu.setText("Phụ thu: 0");
         
@@ -123,6 +118,7 @@ public class BillForm extends javax.swing.JFrame {
         JlbSoNgaytO.setText(soNgayO + " ngày");
         
         int sum=phongModel.tongTienPhong(datPhong);
+        this.tongTien=sum;
         Tong.setText("Tổng: " + sum + " đồng");
 
         this.tongTienPhong=sum+tongTien;
@@ -629,7 +625,22 @@ public class BillForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Không thể hiển thị ảnh mã QR!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public  String taoMaMoi() {
+        int soLuong = HoaDonDAO.demSoHoaDon();
+        int maMoi = soLuong + 1;
+        return String.format("HD%02d", maMoi); 
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        HoaDonController hoaDonController=new HoaDonController();
+        String maHoaDon=this.maHoaDon;
+        DateTimeFormatter oldFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        LocalDate date = LocalDate.parse(ngayLap, oldFormatter);
+        ngayLap = date.format(newFormatter);
+        System.out.println(maHoaDon + " " +MaDatPhong + " " +ngayLap + " "+ tongTien);
+        boolean result =hoaDonController.addHoaDonIntoModel(maHoaDon,MaDatPhong ,ngayLap ,tongTien);
         String trangThai="Trống";
         phongModel.updateDatPhongModel(MaDatPhong, trangThai);
         panel.setBackground(new Color(250, 140, 0));
