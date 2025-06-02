@@ -1241,6 +1241,8 @@ public class PhongForm extends javax.swing.JPanel {
         if (part.length > 1) {
             loaiPhong = part[1].trim();  
 }
+        
+
         if(ButtonP102.getText()=="Đặt phòng") {       
             DatPhongForm dh=new DatPhongForm(JpnP102,maPhong,TinhTrangP102,ButtonP102,null,kieuPhong,loaiPhong);
             dh.setLocationRelativeTo(null);
@@ -1250,6 +1252,7 @@ public class PhongForm extends javax.swing.JPanel {
         
         else {
             DatPhong x=phong.getPhongDangSuDung(MaPhongP102.getText());
+            System.out.println(x.getTrangThai());
             this.TableDV=ctdichVu.createCTDichVuTable(x.getMaDatPhong());
             BillForm bill=new BillForm(maPhong,loaiPhong,kieuPhong,x.getMaDatPhong(),x.getMaKhachHang(),TableDV,JpnP102,TinhTrangP102,ButtonP102);
             bill.setLocationRelativeTo(null);

@@ -45,7 +45,7 @@ public class HoaDonDAO {
        
       return dsHoaDon;
     }
-    
+  
     
     public int addHoaDon(String maHoaDon,String maDatPhong,String ngayLap,int thanhTien) {
             int i = 0;
@@ -108,4 +108,19 @@ public class HoaDonDAO {
         }
         return 0;
     }
+    public static int tinhTongTienTatCaHoaDon() {
+    String sql = "SELECT SUM(THANHTIEN) FROM HOADON";
+    try (Connection conn = ConnectionUtils.getMyConnection();
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+
+        if (rs.next()) {
+            return rs.getInt(1); // Tổng tiền
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return 0; // Trường hợp lỗi hoặc không có hóa đơn
+}
+
 }

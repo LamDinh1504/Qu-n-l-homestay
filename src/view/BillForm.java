@@ -4,21 +4,37 @@
  */
 package view;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.File; // For JFileChooser and FileOutputStream
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException; // For BaseFont IOException
+
+import javax.swing.JFileChooser; // For choosing file save location
+
 import controller.CTDichVuController;
-import controller.DichVuController;
 import controller.HoaDonController;
 import controller.PhongController;
+import controller.WritePDF;
 import dao.HoaDonDAO;
-import dao.KhachHangDAO;
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Panel;
-import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -32,6 +48,7 @@ import javax.swing.table.DefaultTableModel;
 import model.CTDichVu;
 import model.DatPhong;
 import model.DichVu;
+
 
 /**
  *
@@ -170,6 +187,7 @@ public class BillForm extends javax.swing.JFrame {
         BtnTaoMaQR = new javax.swing.JButton();
         JtfTienTraLai = new javax.swing.JTextField();
         JtfKhachDua = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -490,6 +508,16 @@ public class BillForm extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(0, 143, 143));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("In hóa đơn");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -505,9 +533,9 @@ public class BillForm extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(74, 74, 74)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(JlbTienTraLai)
@@ -531,8 +559,9 @@ public class BillForm extends javax.swing.JFrame {
                                                 .addComponent(JtfKhachDua, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(18, 18, 18))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
                                 .addComponent(jButton1)
+                                .addGap(56, 56, 56)
+                                .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2)
                                 .addGap(67, 67, 67))))))
@@ -574,7 +603,8 @@ public class BillForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
                         .addGap(85, 85, 85))))
         );
 
@@ -670,7 +700,14 @@ public class BillForm extends javax.swing.JFrame {
         int khachDua = Integer.parseInt(JtfKhachDua.getText().trim());
 
         // Tính tiền trả lại
-        int tienTraLai = -(khachDua - tongTien);
+        
+        if (khachDua < tongTien) {
+    JOptionPane.showMessageDialog(null, "Số tiền khách đưa không đủ để thanh toán!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+    return; // hoặc xử lý khác tùy chương trình
+}
+
+        int tienTraLai = khachDua - tongTien;
+
 
         // Hiển thị kết quả (giả sử txtTienTraLai là ô hiển thị tiền trả lại)
         JtfTienTraLai.setText(String.valueOf(tienTraLai));
@@ -680,6 +717,12 @@ public class BillForm extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_JtfKhachDuaActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        WritePDF writepdf=new WritePDF();
+        String chuoiTongTien = String.valueOf(tongTienPhong);
+        writepdf.writeHoaDon(maHoaDon, MaPhong, LoaiPhong, KieuPhong, MaDatPhong, maKhachHang, NgayDen.getText(), NgayTraPhong.getText(), ngayLap, TableDichVu,chuoiTongTien );
+    }//GEN-LAST:event_jButton3ActionPerformed
+//KieuPhong, MaPhong, LoaiPhong, LoaiPhong
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -707,6 +750,7 @@ public class BillForm extends javax.swing.JFrame {
     private javax.swing.JLabel TongTien;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

@@ -75,10 +75,20 @@ public class HoaDonController {
         Object[][] hoaDonTableData = new Object[rowNum][columnNum];
         for(int i = 0 ; i<rowNum;i++){
             hoaDonTableData[i][0] = hoaDonList.get(i).getMaHoaDon();
-            hoaDonTableData[i][1] = hoaDonList.get(i).getNgayLap();
+            hoaDonTableData[i][1] = hoaDonList.get(i).getNgayLap().substring(0, 10);
             hoaDonTableData[i][2] = hoaDonList.get(i).getThanhTien();
          
         }
         return hoaDonTableData;
     }
+    
+    public int getTongTienTatCaHoaDon() {
+    try {
+        return HoaDonDAO.tinhTongTienTatCaHoaDon();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return 0; // Trả về 0 nếu xảy ra lỗi
+    }
+}
+
 }

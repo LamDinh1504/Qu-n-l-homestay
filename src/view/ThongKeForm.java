@@ -6,12 +6,21 @@ package view;
 
 import components.ClientTable;
 import components.HoaDonTable;
+import controller.HoaDonController;
 import dao.HoaDonDAO;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.HoaDon;
 
 /**
@@ -29,9 +38,12 @@ public class ThongKeForm extends JPanel {
     
     public ThongKeForm() {
         initComponents();
-        Model = (DefaultTableModel) TableHoaDon.getModel();
-        showTable();
         refreshTable();
+        Model = (DefaultTableModel) TableHoaDon.getModel();
+        HoaDonController tongHoaDon = new HoaDonController();
+        int tongHD = tongHoaDon.getTongTienTatCaHoaDon();
+        tongHD1.setText(tongHD + " đồng");
+       
     }
     
 
@@ -46,6 +58,7 @@ public class ThongKeForm extends JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
+        tongHD1 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setText("THỐNG KÊ DOANH THU");
@@ -60,7 +73,7 @@ public class ThongKeForm extends JPanel {
         ));
         jScrollPane1.setViewportView(TableHoaDon);
 
-        jLabelTong.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabelTong.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelTong.setText("TỔNG DOANH THU: ");
 
         jLabel3.setText("Tìm kiếm theo ngày:");
@@ -78,6 +91,9 @@ public class ThongKeForm extends JPanel {
             }
         });
 
+        tongHD1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tongHD1.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,9 +102,6 @@ public class ThongKeForm extends JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelTong, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel3))
@@ -103,8 +116,11 @@ public class ThongKeForm extends JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)))
+                        .addComponent(jLabelTong, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tongHD1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,9 +134,11 @@ public class ThongKeForm extends JPanel {
                     .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelTong)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTong)
+                    .addComponent(tongHD1))
                 .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -130,8 +148,18 @@ public class ThongKeForm extends JPanel {
     }//GEN-LAST:event_txtDateActionPerformed
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFindActionPerformed
+                String keyword = txtDate.getText().trim().toLowerCase();
+
+        DefaultTableModel model = (DefaultTableModel) TableHoaDon.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        TableHoaDon.setRowSorter(sorter);
+
+        if (keyword.isEmpty()) {
+            sorter.setRowFilter(null); // Hiển thị toàn bộ
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1)); // Cột 1: "Tên khách hàng"
+        }
+        }//GEN-LAST:event_btnFindActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -141,18 +169,11 @@ public class ThongKeForm extends JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelTong;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel tongHD1;
     private javax.swing.JTextField txtDate;
     // End of variables declaration//GEN-END:variables
 
-    private void showTable() {
-        hoadon = new HoaDonDAO().getAllHoaDon();
-        Model.setRowCount(0);
-        for ( HoaDon hd: hoadon){
-            Model.addRow(new Object[]{
-                TableHoaDon.getRowCount()+1, hd.getNgayLap(), hd.getThanhTien()
-            });
-        }
-    }
+ 
     
     private void refreshTable(){
         HoaDonTable newTable = new HoaDonTable();
@@ -176,7 +197,5 @@ public class ThongKeForm extends JPanel {
     }
     
     
-    
-    
-
+   
 }
