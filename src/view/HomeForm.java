@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import view.DangKy1;
 
 /**
  *
@@ -38,7 +39,6 @@ public class HomeForm extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("Phong", Phong, JlbPhong));
         listItem.add(new DanhMucBean("KhachHang", KhachHang, JlbKhachHang));
         listItem.add(new DanhMucBean("ThongKe", ThongKe, JlbThongKe));
-        listItem.add(new DanhMucBean("TaiKhoan", TaiKhoan, JlbTaiKhoan));
         listItem.add(new DanhMucBean("DangXuat", DangXuat, JlbDangXuat));
         controller.setEvent(listItem);
         
@@ -77,8 +77,6 @@ public class HomeForm extends javax.swing.JFrame {
         JlbKhachHang = new javax.swing.JLabel();
         ThongKe = new javax.swing.JPanel();
         JlbThongKe = new javax.swing.JLabel();
-        TaiKhoan = new javax.swing.JPanel();
-        JlbTaiKhoan = new javax.swing.JLabel();
         DangXuat = new javax.swing.JPanel();
         JlbDangXuat = new javax.swing.JLabel();
         JpnMain = new javax.swing.JPanel();
@@ -156,7 +154,7 @@ public class HomeForm extends javax.swing.JFrame {
 
         JlbNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JlbNhanVien.setForeground(new java.awt.Color(255, 255, 255));
-        JlbNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customer-service_1908409.png"))); // NOI18N
+        JlbNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/man_16044770.png"))); // NOI18N
         JlbNhanVien.setText("Nhân Viên");
 
         javax.swing.GroupLayout NhanVienLayout = new javax.swing.GroupLayout(NhanVien);
@@ -185,7 +183,7 @@ public class HomeForm extends javax.swing.JFrame {
 
         JlbDichVu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JlbDichVu.setForeground(new java.awt.Color(255, 255, 255));
-        JlbDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sofa-bed_12602580.png"))); // NOI18N
+        JlbDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customer-service_1908409.png"))); // NOI18N
         JlbDichVu.setText("Dịch vụ");
 
         javax.swing.GroupLayout DichVuLayout = new javax.swing.GroupLayout(DichVu);
@@ -200,7 +198,7 @@ public class HomeForm extends javax.swing.JFrame {
         DichVuLayout.setVerticalGroup(
             DichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DichVuLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(JlbDichVu)
                 .addGap(16, 16, 16))
         );
@@ -214,7 +212,7 @@ public class HomeForm extends javax.swing.JFrame {
 
         JlbPhong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JlbPhong.setForeground(new java.awt.Color(255, 255, 255));
-        JlbPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customer-service_1908409.png"))); // NOI18N
+        JlbPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sofa-bed_12602580.png"))); // NOI18N
         JlbPhong.setText("Phòng");
         JlbPhong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -243,7 +241,7 @@ public class HomeForm extends javax.swing.JFrame {
 
         JlbKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JlbKhachHang.setForeground(new java.awt.Color(255, 255, 255));
-        JlbKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/animal_16434247.png"))); // NOI18N
+        JlbKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/profile_14534426.png"))); // NOI18N
         JlbKhachHang.setText("Khách hàng");
 
         javax.swing.GroupLayout KhachHangLayout = new javax.swing.GroupLayout(KhachHang);
@@ -260,7 +258,7 @@ public class HomeForm extends javax.swing.JFrame {
             .addGroup(KhachHangLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(JlbKhachHang)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ThongKe.setBackground(new java.awt.Color(54, 55, 55));
@@ -287,36 +285,17 @@ public class HomeForm extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        TaiKhoan.setBackground(new java.awt.Color(54, 55, 55));
-
-        JlbTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        JlbTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
-        JlbTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/profile_14534426.png"))); // NOI18N
-        JlbTaiKhoan.setText("Tài khoản");
-
-        javax.swing.GroupLayout TaiKhoanLayout = new javax.swing.GroupLayout(TaiKhoan);
-        TaiKhoan.setLayout(TaiKhoanLayout);
-        TaiKhoanLayout.setHorizontalGroup(
-            TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TaiKhoanLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(JlbTaiKhoan)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        TaiKhoanLayout.setVerticalGroup(
-            TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TaiKhoanLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(JlbTaiKhoan)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
         DangXuat.setBackground(new java.awt.Color(54, 55, 55));
 
         JlbDangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         JlbDangXuat.setForeground(new java.awt.Color(255, 255, 255));
         JlbDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/log-out_10117554.png"))); // NOI18N
         JlbDangXuat.setText("Đăng xuất");
+        JlbDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JlbDangXuatMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout DangXuatLayout = new javax.swing.GroupLayout(DangXuat);
         DangXuat.setLayout(DangXuatLayout);
@@ -346,7 +325,6 @@ public class HomeForm extends javax.swing.JFrame {
             .addComponent(Phong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(KhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(ThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(TaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(DangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -365,11 +343,9 @@ public class HomeForm extends javax.swing.JFrame {
                 .addComponent(KhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(DangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JpnMain.setBackground(new java.awt.Color(54, 55, 55));
@@ -378,11 +354,11 @@ public class HomeForm extends javax.swing.JFrame {
         JpnMain.setLayout(JpnMainLayout);
         JpnMainLayout.setHorizontalGroup(
             JpnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1002, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
         JpnMainLayout.setVerticalGroup(
             JpnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGap(0, 611, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -392,12 +368,15 @@ public class HomeForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JpnMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(JpnMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(JpnMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(JpnMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         JpnMain.getAccessibleContext().setAccessibleName("");
@@ -445,6 +424,15 @@ public class HomeForm extends javax.swing.JFrame {
     private void JlbPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlbPhongMouseClicked
      
     }//GEN-LAST:event_JlbPhongMouseClicked
+
+    private void JlbDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlbDangXuatMouseClicked
+        dispose();
+                                        
+        DangNhap1 dk = new DangNhap1();
+        dk.setLocationRelativeTo(this);
+        dk.setVisible(true);
+  
+    }//GEN-LAST:event_JlbDangXuatMouseClicked
     
                    
     /**
@@ -490,14 +478,12 @@ public class HomeForm extends javax.swing.JFrame {
     private javax.swing.JLabel JlbKhachHang;
     private javax.swing.JLabel JlbNhanVien;
     private javax.swing.JLabel JlbPhong;
-    private javax.swing.JLabel JlbTaiKhoan;
     private javax.swing.JLabel JlbThongKe;
     private javax.swing.JLabel JlbTrangChu;
     private javax.swing.JPanel JpnMain;
     private javax.swing.JPanel KhachHang;
     private javax.swing.JPanel NhanVien;
     private javax.swing.JPanel Phong;
-    private javax.swing.JPanel TaiKhoan;
     private javax.swing.JPanel ThongKe;
     private javax.swing.JPanel TrangChu;
     private javax.swing.JLabel jLabel1;

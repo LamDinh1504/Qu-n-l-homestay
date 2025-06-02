@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 import bean.DanhMucBean;
@@ -16,15 +13,11 @@ import view.DichVuForm;
 import view.KhachHangForm;
 import view.NhanVienForm;
 import view.PhongForm;
-import view.TaiKhoanForm;
 import view.ThongKeForm;
 
 import view.TrangChuForm;
 
-/**
- *
- * @author ASUS
- */
+
 public class ChuyenManHinhController {
     private JPanel root;
     private String kindSelected = "";
@@ -88,9 +81,6 @@ public class ChuyenManHinhController {
                     break;
                 case "ThongKe":
                     node=new ThongKeForm();
-                    break;
-                case "TaiKhoan":
-                    node=new TaiKhoanForm();
                     break;
                     
                 default:

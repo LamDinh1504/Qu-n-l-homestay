@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 import dao.CTDichVuDAO;
@@ -12,10 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import model.CTDichVu;
 import model.DichVu;
 
-/**
- *
- * @author ASUS
- */
+
 public class CTDichVuController {
     private CTDichVuDAO CTdichvuModel;
     private DichVuDAO dichvuModel;
@@ -38,11 +32,11 @@ public class CTDichVuController {
             return false;
         }
         else{            
-            //Trạng thái mặc định khi thêm khách hàng sẽ là "vắng mặt"
+           
             int trangThai = 2;
             
             try{
-                //Khi sử dụng truy xuất SQL thì nên sử dụng trong Try Catch.
+                
                 CTdichvuModel.addCTDichVu(maDatPhong,maDichVu,soLuong);
                 return true;
             }
@@ -79,10 +73,10 @@ public class CTDichVuController {
     }
     public int tongTienDichVu(ArrayList<DichVu> dsDichVu, String maDatPhong) {
         int tong = 0;
-        ArrayList<CTDichVu> dsCTDichVu = CTdichvuModel.getAllDichVu(maDatPhong); // Lấy danh sách CTDV từ DB
+        ArrayList<CTDichVu> dsCTDichVu = CTdichvuModel.getAllDichVu(maDatPhong); 
 
         for (CTDichVu ctdv : dsCTDichVu) {
-            tong += ctdv.calculator(dsDichVu); // Tính tiền từng dịch vụ
+            tong += ctdv.calculator(dsDichVu);
         }
 
         return tong;

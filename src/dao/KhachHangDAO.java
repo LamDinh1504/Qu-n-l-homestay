@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package dao;
 
 
@@ -13,13 +10,9 @@ import model.KhachHang;
 import java.sql.*;
 import model.DichVu;
 
-/**
- *
- * @author ASUS
- */
+
 public class KhachHangDAO {
 
-    // Lấy danh sách tất cả khách hàng
     public ArrayList<KhachHang> getAllKhachHang() {
         ArrayList<KhachHang> dsKhachHang = new ArrayList<>();
         String query = "SELECT * FROM KHACHHANG";

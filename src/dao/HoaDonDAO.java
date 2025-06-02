@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package dao;
 
 import ConnectDB.ConnectionUtils;
@@ -17,10 +14,7 @@ import java.util.logging.Logger;
 import model.HoaDon;
 import model.NhanVien;
 
-/**
- *
- * @author ASUS
- */
+
 public class HoaDonDAO {
     public ArrayList<HoaDon> getAllHoaDon()   {
         ArrayList<HoaDon> dsHoaDon = new ArrayList<>();
@@ -55,16 +49,16 @@ public class HoaDonDAO {
             ps.setString(1, maHoaDon);
             ps.setString(2, maDatPhong);
 
-            // Chuyển String "dd-MM-yyyy" sang java.sql.Date
+  
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate localDate = LocalDate.parse(ngayLap, formatter);
             java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
 
-            ps.setDate(3, sqlDate);  // <-- đúng kiểu dữ liệu DATE
+            ps.setDate(3, sqlDate);  
             ps.setInt(4, thanhTien);
             i = ps.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace(); // In lỗi chi tiết ra console
+            e.printStackTrace(); 
         }
         return i;
     }
@@ -115,12 +109,12 @@ public class HoaDonDAO {
          ResultSet rs = ps.executeQuery()) {
 
         if (rs.next()) {
-            return rs.getInt(1); // Tổng tiền
+            return rs.getInt(1); 
         }
     } catch (Exception e) {
         e.printStackTrace();
     }
-    return 0; // Trường hợp lỗi hoặc không có hóa đơn
+    return 0; 
 }
 
 }

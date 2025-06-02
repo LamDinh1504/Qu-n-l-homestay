@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 import dao.DatPhongDAO;
@@ -16,10 +13,7 @@ import model.LoaiPhong;
 import model.NhanVien;
 import model.Phong;
 
-/**
- *
- * @author ASUS
- */
+
 public class PhongController {
     
     private KhachHangDAO khachHangModel;

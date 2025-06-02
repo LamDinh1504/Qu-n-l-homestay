@@ -1,19 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
-import dao.CTDichVuDAO;
 import dao.HoaDonDAO;
 import java.util.ArrayList;
 import model.HoaDon;
-import model.KhachHang;
 
-/**
- *
- * @author ASUS
- */
 public class HoaDonController {
     private HoaDonDAO HoaDonModel;
     
@@ -25,11 +16,9 @@ public class HoaDonController {
             return false;
         }
         else{            
-            //Trạng thái mặc định khi thêm khách hàng sẽ là "vắng mặt"
             int trangThai = 2;
             
             try{
-                //Khi sử dụng truy xuất SQL thì nên sử dụng trong Try Catch.
                 HoaDonModel.addHoaDon(maHoaDon,maDatPhong,ngayLap,thanhTien);
                 return true;
             }
@@ -56,7 +45,6 @@ public class HoaDonController {
         }
         else{
             try{
-                //Khi sử dụng truy xuất SQL thì nên sử dụng trong Try Catch.
                 HoaDonModel.updateHoaDon(maHoaDon,maDatPhong,ngayLap,thanhTien);
                 return true;
             }
@@ -87,7 +75,7 @@ public class HoaDonController {
         return HoaDonDAO.tinhTongTienTatCaHoaDon();
     } catch (Exception e) {
         e.printStackTrace();
-        return 0; // Trả về 0 nếu xảy ra lỗi
+        return 0; 
     }
 }
 

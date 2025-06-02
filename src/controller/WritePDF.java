@@ -4,10 +4,7 @@
  */
 package controller;
 
-/**
- *
- * @author ADMIN
- */
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -119,15 +116,12 @@ public class WritePDF {
             String ngayDen,
             String ngayTraPhong,
             String ngayLapHoaDon,
-            JTable tableDichVu,// Đã đổi từ DefaultTableModel sang JTable
-//            String tienDichVuText,
-//            String phuThuText,
-//            String tongTienPhongText, // Tổng tiền phòng
-            String tongTienPhaiTraText // Tổng tiền cuối cùng
+            JTable tableDichVu,
+            String tongTienPhaiTraText 
     ) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Chọn nơi lưu hóa đơn PDF");
-        int userSelection = fileChooser.showSaveDialog(null); // Sử dụng null nếu không có component cha cụ thể
+        int userSelection = fileChooser.showSaveDialog(null); 
 
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
@@ -146,14 +140,12 @@ public class WritePDF {
                 PdfWriter.getInstance(document, fileOutputStream);
                 document.open();
 
-                // Khai báo và nhúng font tiếng Việt
-                // Đảm bảo file arial.ttf tồn tại trên hệ thống hoặc cung cấp đường dẫn khác
-                // Ví dụ: "c:/windows/fonts/arial.ttf" hoặc "fonts/arial.ttf" nếu bạn đặt font trong thư mục fonts của project
+      
                 BaseFont bf = BaseFont.createFont("c:/windows/fonts/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-                Font fontHeader = new Font(bf, 24, Font.BOLD, new BaseColor(0, 143, 143)); // Màu xanh đậm cho tiêu đề chính
+                Font fontHeader = new Font(bf, 24, Font.BOLD, new BaseColor(0, 143, 143)); 
                 Font fontTitle = new Font(bf, 16, Font.BOLD, BaseColor.BLACK);
                 Font fontNormal = new Font(bf, 12, Font.NORMAL, BaseColor.BLACK);
-                Font fontBold = new Font(bf, 12, Font.BOLD, BaseColor.WHITE); // Màu trắng cho tiêu đề bảng
+                Font fontBold = new Font(bf, 12, Font.BOLD, BaseColor.WHITE); 
 
                 // Tiêu đề chính
                 Paragraph mainTitle = new Paragraph("HÓA ĐƠN THANH TOÁN", fontHeader);
@@ -184,16 +176,16 @@ public class WritePDF {
                 document.add(serviceTitle);
 
                 // Bảng dịch vụ
-                PdfPTable pdfTable = new PdfPTable(3); // 3 cột: Tên dịch vụ, Đơn giá, Số lượng
+                PdfPTable pdfTable = new PdfPTable(3);
                 pdfTable.setWidthPercentage(100);
                 pdfTable.setSpacingBefore(10f);
                 pdfTable.setSpacingAfter(10f);
 
-                // Set headers cho table chi tiet
+        
                 PdfPCell cell;
                 cell = new PdfPCell(new Phrase("Tên dịch vụ", fontBold));
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(new BaseColor(0, 143, 143)); // Màu nền cho header
+                cell.setBackgroundColor(new BaseColor(0, 143, 143)); 
                 cell.setPadding(5);
                 pdfTable.addCell(cell);
 

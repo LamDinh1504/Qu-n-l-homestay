@@ -16,10 +16,6 @@ import model.CTDichVu;
 import model.DichVu;
 import model.NhanVien;
 
-/**
- *
- * @author ASUS
- */
 public class CTDichVuDAO {
     
     public static ArrayList<CTDichVu> getAllCTDichVu()   {

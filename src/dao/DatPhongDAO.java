@@ -70,8 +70,8 @@ public class DatPhongDAO {
         ps.setString(1, maDatPhong);
         ps.setString(2, maKhachHang);
         ps.setString(3, maPhong);
-        ps.setString(4, ngayBatDau); // ví dụ: "2025-05-20"
-        ps.setString(5, ngayTra);    // ví dụ: "2025-05-25"
+        ps.setString(4, ngayBatDau); 
+        ps.setString(5, ngayTra);   
         ps.setString(6, trangThai);
         i = ps.executeUpdate();
     } catch (Exception e) {
@@ -111,7 +111,7 @@ public class DatPhongDAO {
              ResultSet rs = ps.executeQuery()) {
 
             if (rs.next()) {
-                return rs.getInt(1); // số lượng KH hiện có
+                return rs.getInt(1); 
             }
         } catch (Exception e) {
             e.printStackTrace();

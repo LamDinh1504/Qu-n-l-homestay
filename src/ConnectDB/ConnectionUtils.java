@@ -6,15 +6,11 @@ package ConnectDB;
 
 import java.sql.SQLException;
 
-/**
- *
- * @author ASUS
- */
+
 public class ConnectionUtils {
     public static java.sql.Connection getMyConnection() throws SQLException,
           ClassNotFoundException {
-      // Sử dụng Oracle.
-      // Bạn có thể thay thế bởi Database nào đó.
+
       return Connection.getOracleConnection();
   }
 

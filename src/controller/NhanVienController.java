@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 import dao.NhanVienDAO;
 import java.util.ArrayList;
 import model.NhanVien;
 
-/**
- *
- * @author ASUS
- */
 public class NhanVienController {
     private NhanVienDAO nhanVienModel;
     
@@ -22,7 +15,7 @@ public class NhanVienController {
     public Object[][] getNhanVienFromModel() {
         ArrayList<NhanVien> nhanVienList = nhanVienModel.getAllNhanVien();
         
-        int columnNum = 7; //"Mã khách hàng","Họ và tên","Tên đăng nhập","Email","Trạng thái"
+        int columnNum = 7;
         int rowNum = nhanVienList.size();
         
         Object[][] khachHangTableData = new Object[rowNum][columnNum];
@@ -44,11 +37,9 @@ public class NhanVienController {
             return false;
         }
         else{            
-            //Trạng thái mặc định khi thêm khách hàng sẽ là "vắng mặt"
             int trangThai = 2;
             
             try{
-                //Khi sử dụng truy xuất SQL thì nên sử dụng trong Try Catch.
                 nhanVienModel.addNhanVien(maNhanVien,hoTen, gioiTinh, soDienThoai, diaChi, email,chucVu);
                 return true;
             }
@@ -64,7 +55,7 @@ public class NhanVienController {
     try {
             return nhanVienModel.deleteNhanVien(maNhanVien);
          } catch (Exception e) {
-        // Bạn có thể log lỗi tại đây nếu cần
+  
             return -1;
         }
     }
@@ -76,7 +67,6 @@ public class NhanVienController {
         }
         else{
             try{
-                //Khi sử dụng truy xuất SQL thì nên sử dụng trong Try Catch.
                 nhanVienModel.updateNhanVien(maNhanVien, hoTen, gioiTinh, soDienThoai, diaChi,email,chucVu);
                 return true;
             }
