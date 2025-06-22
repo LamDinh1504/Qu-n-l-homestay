@@ -22,3 +22,8 @@
 ```bash
 git clone https://github.com/LamDinh1504/Qu-n-l-homestay.git
 
+## Tài khoản đăng nhập
+
+- Tên tài khoản: lamdv1504
+- Mật khẩu:123
+
