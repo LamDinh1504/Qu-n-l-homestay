@@ -82,7 +82,7 @@ public class NhanVienDAO {
         return i;
     }
     public void updateNhanVien(String maNhanVien,String hoTen, String gioiTinh, String soDienThoai, String diaChi, String email,String chucVu){
-        String query = "UPDATE NHANVIEN SET HOTEN=?,CMND=?,SODIENTHOAI=?, DIACHI=?, EMAIL=?, CHUCVU=? Where MANHANVIEN=?";
+        String query = "UPDATE NHANVIEN SET HOTEN=?,GIOITINH=?,SODIENTHOAI=?, DIACHI=?, EMAIL=?, CHUCVU=? Where MANHANVIEN=?";
         try(Connection conn = ConnectionUtils.getMyConnection()) {
             PreparedStatement ps=conn.prepareStatement(query);
             ps.setString(1,hoTen);
@@ -91,6 +91,7 @@ public class NhanVienDAO {
             ps.setString(4, diaChi);
             ps.setString(5, email);
             ps.setString(6,chucVu);
+            ps.setString(7, maNhanVien);
             ps.executeUpdate();
         }catch(Exception e){
             System.out.print(e);

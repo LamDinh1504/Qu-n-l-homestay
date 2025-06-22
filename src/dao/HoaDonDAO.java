@@ -117,4 +117,25 @@ public class HoaDonDAO {
     return 0; 
 }
 
+    public String getMaHoaDonByMaDatPhong(String maDatPhong) {
+    if (maDatPhong == null || maDatPhong.trim().isEmpty()) {
+        System.err.println("Mã đặt phòng rỗng hoặc null.");
+        return null;
+    }
+
+    String query = "SELECT MAHD FROM HOADON WHERE MADP = ?";
+    try (Connection conn = ConnectionUtils.getMyConnection();
+         PreparedStatement ps = conn.prepareStatement(query)) {
+        ps.setString(1, maDatPhong.trim());
+
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getString("MAHD");
+            }
+        }
+    } catch (Exception e) {
+        System.err.println("Lỗi khi truy vấn mã hóa đơn: " + e.getMessage());
+    }
+    return null;
+}
 }

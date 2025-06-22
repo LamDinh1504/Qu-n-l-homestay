@@ -310,25 +310,30 @@ public class PhongForm extends javax.swing.JPanel {
         JpnP102.setLayout(JpnP102Layout);
         JpnP102Layout.setHorizontalGroup(
             JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP102Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+            .addGroup(JpnP102Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(MaPhongP102)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(JpnP102Layout.createSequentialGroup()
                 .addGroup(JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TinhTrangP102)
-                    .addGroup(JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP102Layout.createSequentialGroup()
-                            .addComponent(MaPhongP102)
-                            .addGap(97, 97, 97))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP102Layout.createSequentialGroup()
+                    .addGroup(JpnP102Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(KieuPhongP102)
-                            .addGap(46, 46, 46)))
-                    .addGroup(JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(ButtonP102)
-                        .addComponent(LoaiPhongP102))))
+                            .addGroup(JpnP102Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TinhTrangP102)
+                                    .addComponent(LoaiPhongP102)))))
+                    .addGroup(JpnP102Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(ButtonP102)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JpnP102Layout.setVerticalGroup(
             JpnP102Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JpnP102Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(MaPhongP102)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(KieuPhongP102)
@@ -336,9 +341,9 @@ public class PhongForm extends javax.swing.JPanel {
                 .addComponent(LoaiPhongP102)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TinhTrangP102)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonP102)
-                .addContainerGap())
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         JpnP103.setBackground(new java.awt.Color(250, 140, 0));
@@ -374,7 +379,7 @@ public class PhongForm extends javax.swing.JPanel {
         JpnP103Layout.setHorizontalGroup(
             JpnP103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JpnP103Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+                .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(JpnP103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpnP103Layout.createSequentialGroup()
                         .addGroup(JpnP103Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,7 +415,7 @@ public class PhongForm extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(JpnP101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(JpnP102, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnP102, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
             .addComponent(JpnP103, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -420,10 +425,10 @@ public class PhongForm extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JpnP101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JpnP102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnP102, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JpnP103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -582,7 +587,7 @@ public class PhongForm extends javax.swing.JPanel {
                 .addComponent(TinhTrangP202)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonP202)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         JpnP203.setBackground(new java.awt.Color(250, 140, 0));
@@ -646,7 +651,7 @@ public class PhongForm extends javax.swing.JPanel {
                 .addComponent(TinhTrangP203)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonP203)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -915,7 +920,7 @@ public class PhongForm extends javax.swing.JPanel {
                 .addComponent(JpnP302, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JpnP303, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
@@ -1076,7 +1081,7 @@ public class PhongForm extends javax.swing.JPanel {
                 .addComponent(TinhTrangP402)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonP402)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         JpnP403.setBackground(new java.awt.Color(250, 140, 0));

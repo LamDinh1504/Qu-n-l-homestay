@@ -119,7 +119,7 @@ public class DangNhap1 extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 350, 427));
 
-        anhNen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res2/pngtree-a-hotel-room-with-a-bed-desk-and-a-computer-image_13183086.jpg"))); // NOI18N
+        anhNen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/pngtree-a-hotel-room-with-a-bed-desk-and-a-computer-image_13183086.jpg"))); // NOI18N
         anhNen.setText("jLabel5");
         getContentPane().add(anhNen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 430));
 

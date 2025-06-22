@@ -639,7 +639,7 @@ public class BillForm extends javax.swing.JFrame {
     public void showQRImageDialog() {
         try {
             // Đường dẫn tới ảnh QR (bạn có thể thay bằng đường dẫn ảnh thật của bạn)
-            File qrFile = new File("C:\\Users\\ASUS\\Documents\\QuanLyKhachSanThuCung\\src\\icon\\maqr.png");
+            File qrFile = new File("C:\\Users\\ASUS\\Documents\\quanlihomestay\\src\\icon\\maqr.png");
             BufferedImage qrImage = ImageIO.read(qrFile);
 
             JLabel qrLabel = new JLabel(new ImageIcon(qrImage));

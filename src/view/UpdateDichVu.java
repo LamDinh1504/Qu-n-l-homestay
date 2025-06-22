@@ -163,6 +163,7 @@ public class UpdateDichVu extends javax.swing.JFrame {
         String tenDichVu = TenDichVu.getText().trim();
         String donGiaStr = DonGia.getText().trim();
         String donViTinh = DonViTinh.getText().trim();
+//        System.out.println(maDichVu);
 
         Integer donGia = null;
         try {

@@ -79,4 +79,16 @@ public class HoaDonController {
     }
 }
 
+    public String getMaHoaDonByMaDatPhong(String maDatPhong) {
+        if (maDatPhong == null || maDatPhong.trim().isEmpty()) {
+            return null;
+        }
+
+        try {
+            return HoaDonModel.getMaHoaDonByMaDatPhong(maDatPhong);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

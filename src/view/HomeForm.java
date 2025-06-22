@@ -6,7 +6,10 @@ package view;
 
 import bean.DanhMucBean;
 import controller.ChuyenManHinhController;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -27,6 +30,10 @@ public class HomeForm extends javax.swing.JFrame {
         initComponents();
         
         setTitle("QUAN LY KHACH SAN");
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setSize(screenSize.width, screenSize.height);
+        setExtendedState(MAXIMIZED_BOTH);
+        JpnMain.setLayout(new BorderLayout());
         
         ChuyenManHinhController controller = new ChuyenManHinhController(JpnMain);
         
@@ -39,12 +46,40 @@ public class HomeForm extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("Phong", Phong, JlbPhong));
         listItem.add(new DanhMucBean("KhachHang", KhachHang, JlbKhachHang));
         listItem.add(new DanhMucBean("ThongKe", ThongKe, JlbThongKe));
-        listItem.add(new DanhMucBean("DangXuat", DangXuat, JlbDangXuat));
         controller.setEvent(listItem);
         
+        setLocationRelativeTo(null);
+        setVisible(true);
         JlbTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             controller.setView(TrangChu, JlbTrangChu); // Gọi lại controller để chuyển view
+        }
+        private void NhanVienMouseClicked(java.awt.event.MouseEvent evt) {                                      
+        NhanVienForm tk = new NhanVienForm();
+        showForm(tk);
+    }                                     
+
+        private void TrangChuMouseClicked(java.awt.event.MouseEvent evt) {                                      
+            TrangChuForm tk = new TrangChuForm();
+            showForm(tk);
+        }                                     
+
+        private void PhongMouseClicked(java.awt.event.MouseEvent evt) {                                   
+            PhongForm tk = new PhongForm();
+            showForm(tk);
+        }                                  
+
+        private void DichVuMouseClicked(java.awt.event.MouseEvent evt) {                                    
+            DichVuForm tk = new DichVuForm();
+            showForm(tk);
+        }
+
+        // Phương thức hiển thị form với layout phù hợp
+        private void showForm(javax.swing.JPanel form) {
+            JpnMain.removeAll();
+            JpnMain.add(form, BorderLayout.CENTER);
+            JpnMain.revalidate();
+            JpnMain.repaint();
         }
     });
        

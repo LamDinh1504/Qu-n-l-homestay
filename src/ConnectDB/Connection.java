@@ -12,12 +12,12 @@ public class Connection {
         //Host name
         String hostName = "localhost";
         //SID Oralce
-        String sid = "orcl";
+        String sid = "orcls";
         //Username
-        String userName = "DTBUser";
+        String userName = "QUANLYMONHOC";
         
         //Password
-        String password = "Hoanglong2005";
+        String password = "Admin123";
         
      
         Class.forName("oracle.jdbc.driver.OracleDriver");

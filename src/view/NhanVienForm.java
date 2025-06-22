@@ -59,8 +59,8 @@ public class NhanVienForm extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        JtfTimKiem = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
+        JtfTimKiem = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableNhanVien = new javax.swing.JTable();
 
@@ -107,7 +107,6 @@ public class NhanVienForm extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 17, -1, -1));
-        jPanel1.add(JtfTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(611, 18, 161, -1));
 
         jButton6.setText("Tìm kiếm");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -116,8 +115,9 @@ public class NhanVienForm extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(818, 17, -1, -1));
+        jPanel1.add(JtfTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(611, 18, 161, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1137, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1137, 60));
 
         TableNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,7 +132,7 @@ public class NhanVienForm extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(TableNhanVien);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1030, 280));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1140, 470));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -288,7 +288,7 @@ public class NhanVienForm extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         String keyword = JtfTimKiem.getText().trim().toLowerCase();
-    
+
         DefaultTableModel model = (DefaultTableModel) TableNhanVien.getModel();
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
         TableNhanVien.setRowSorter(sorter);

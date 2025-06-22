@@ -76,13 +76,13 @@ public class DichVuDAO {
         return i;
     }
     public void updateDichVu(String maDichVu,String tenDichVu, int donGia, String donViTinh){
-        String query = "UPDATE DICHVU SET MADV=?,TENDV=?,DONGIA=?, DONVITINH=?";
+        String query = "UPDATE DICHVU SET TENDV=?,DONGIA=?, DONVITINH=? WHERE MADV=?";
         try(Connection conn = ConnectionUtils.getMyConnection()) {
             PreparedStatement ps=conn.prepareStatement(query);
-            ps.setString(1,maDichVu);
-            ps.setString(2, tenDichVu);
-            ps.setDouble(3,donGia);
-            ps.setString(4, donViTinh);
+            ps.setString(1, tenDichVu);
+            ps.setInt(2,donGia);
+            ps.setString(3, donViTinh);
+            ps.setString(4,maDichVu);
 
             ps.executeUpdate();
         }catch(Exception e){

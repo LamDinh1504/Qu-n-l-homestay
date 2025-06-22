@@ -59,11 +59,15 @@ public class KhachHangController {
     try {
         PhongController phongModel = new PhongController();
         CTDichVuController ctDichVuModel = new CTDichVuController();
+        HoaDonController hoaDonModel=new HoaDonController();
 
+        DatPhong dp = phongModel.getDatPhong(maKhachHang);
+        String maDP = dp.getMaDatPhong();
 
-        DatPhong listDP = phongModel.getDatPhong(maKhachHang);
-            ctDichVuModel.deleteCTDichVu(listDP.getMaDatPhong()); // Xóa chi tiết dịch vụ
-            phongModel.deleteDatPhong(listDP.getMaKhachHang());    // Xóa đặt phòng
+        ctDichVuModel.deleteCTDichVu(maDP); // 1. Xóa dịch vụ
+        String maHD = hoaDonModel.getMaHoaDonByMaDatPhong(maDP); // 2. Lấy mã hóa đơn
+        hoaDonModel.deleteHoaDon(maHD); // 3. Xóa hóa đơn
+        phongModel.deleteDatPhong(maDP); // 4. Cuối cùng xóa đặt phòng
 
         return khachHangModel.deleteKhachHang(maKhachHang);
 

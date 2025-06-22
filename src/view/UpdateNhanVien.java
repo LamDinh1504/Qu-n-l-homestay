@@ -14,18 +14,18 @@ import model.NhanVien;
  * @author ASUS
  */
 public class UpdateNhanVien extends javax.swing.JFrame {
-    private String MaKH;
+    private String MaNV;
 
     /**
      * Creates new form UpdateKhachHang
      */
-    public UpdateNhanVien(String maKhachHang) {
+    public UpdateNhanVien(String maNhanVien) {
         initComponents();
-        this.MaKH=maKhachHang;
+        this.MaNV=maNhanVien;
     }
 
-    public String getMaKhachHang() {
-        return MaKH;
+    public String getMaNhanVien() {
+        return this.MaNV;
     }
 
     
@@ -250,7 +250,7 @@ public class UpdateNhanVien extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        // TODO add your handling code here:   
-        String maNhanVien=getMaKhachHang();
+        String maNhanVien=getMaNhanVien();
         String hoTen = HoTen.getText().trim();
         String gioiTinh = GioiTinh.getSelectedItem().toString();
         String soDienThoai = SoDienThoai.getText().trim();

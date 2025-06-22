@@ -205,7 +205,7 @@
     <Component class="javax.swing.JLabel" name="anhNen">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/res2/pngtree-a-hotel-room-with-a-bed-desk-and-a-computer-image_13183086.jpg"/>
+          <Image iconType="3" name="/res/pngtree-a-hotel-room-with-a-bed-desk-and-a-computer-image_13183086.jpg"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel5"/>
       </Properties>
